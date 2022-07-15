@@ -1,2 +1,1 @@
-# mahima
-https://grade33.github.io/mahima/
+# Mahima - https://grade33.github.io/mahima/
