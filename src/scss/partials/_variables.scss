@@ -1,0 +1,96 @@
+html body {
+  font-size: 16px;
+  @media (max-width: 479px) {
+    font-size: 13px
+  }
+}
+
+*,
+*::before,
+*::after {
+  cursor: url("@img/cursor.svg"), pointer;	
+}
+
+$black: #021704;
+$gray-strokes: #DEDEDE;
+$gray-bg: #F4F4F4;
+$white: #FDFDFD;
+$gray-txt: #909097;
+$red: #DE3C1A;
+$green: #33594C;
+
+%h1,
+%h2,
+%h3 {
+  font-family: 'Lora';
+}
+
+%txt,
+%bttn,
+%mini-txt {
+  font-family: 'Manrope';
+}
+
+%h1,
+%h2,
+%h3,
+%txt,
+%bttn,
+%mini-txt {
+  font-style: normal;
+  font-weight: 400;
+}
+
+%h1 {
+  font-size: 2rem;
+  line-height: 1.28;
+  @media (max-width: 767px) {
+    font-size: 1.75rem;
+  }
+  @media (max-width: 479px) {
+    font-size: 2rem;
+  }
+}
+
+%h2 {
+  font-size: 1.5rem;
+  line-height: 1.29;
+  @media (max-width: 767px) {
+    font-size: 1.375rem;
+  }
+  @media (max-width: 479px) {
+    font-size: 1.5rem;
+  }
+}
+
+%h3 {
+  font-size: 1.25rem;
+  line-height: 1.3;
+  @media (max-width: 767px) {
+    font-size: 1.125rem;
+  }
+  @media (max-width: 479px) {
+    font-size: 1.23rem;
+  }
+}
+
+%txt {
+  font-size: 1rem;
+  line-height: 1.375;
+}
+
+%bttn {
+  font-size: 0.875rem;
+  line-height: 1.35;
+  @media (max-width: 479px) {
+    font-size: 1rem;
+  }
+}
+
+%mini-txt {
+  font-size: 0.75rem;
+  line-height: 1.3;
+  @media (max-width: 479px) {
+    font-size: 0.77rem;
+  }
+}

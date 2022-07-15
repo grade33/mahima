@@ -1,0 +1,24 @@
+@import './partials/variables';
+@import './partials/mixins';
+
+@import './normalize.css/normalize';
+@import './partials/reset';
+@import './partials/fonts';
+
+// Bootstrap
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "./vendor/bootstrap";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/containers";
+
+// AOS
+@import 'aos/dist/aos';
+
+// Choices
+@import "./vendor/choices";
+
+@import './modules/common';
+@import './modules/main';

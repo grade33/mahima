@@ -1,0 +1,14 @@
+mixin breadcrumbs(obj)
+  ul.breadcrumbs
+    .container.breadcrumbs__container
+      - let lastEl = obj.pop()
+      each val in obj
+        li.breadcrumbs__item
+          a.breadcrumbs__link(href=val[0])=val[1]
+      li.breadcrumbs__item
+        span.breadcrumbs__text=lastEl[1]
+
+mixin btn-favorites(Class)
+  button.btn-favorites(class=Class type="button") 
+    svg.btn-favorites__icon
+      use(xlink:href="@img/sprite.svg#favorites")

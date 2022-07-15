@@ -1,0 +1,28 @@
+header.header
+  .header__top
+    .container.header__container
+      .header__tel-time
+        a.header__tel(href="tel:+88007774999") 8 800 777-4-999
+        span.header__time 7:00 – 22:00 МСК
+      .header__top-nav
+        a.header__top-nav-link(href="#") Помощь
+        a.header__top-nav-link(href="#") Регистрация
+        a.header__top-nav-link(href="#") Вход
+  .header__main
+    .container.header__container
+      nav.nav.header__nav
+        a.nav__link(href="#") Каталог
+        a.nav__link(href="#") Блог
+        a.nav__link(href="#") Контакты
+        a.nav__link(href="#") Дилерам
+      a.header__logo(href="#") 
+        img.header__logo-icon(src="@img/logo.png", alt="Mahima")
+      .header__user-nav
+        form.header__search(action="#") 
+          button.header__search-btn(type="submit")
+            img.header__search-icon(src="@img/search-icon.svg", alt="")
+          input.header__search-field(type="search" placeholder="Поиск")
+        a.header__user-nav-link(href="#") 
+          img.header__favourites-icon(src="@img/favourites-icon.svg", alt="")
+        a.header__user-nav-link(href="#") 
+          img.header__cart-icon(src="@img/cart-icon.svg", alt="")

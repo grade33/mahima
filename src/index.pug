@@ -1,0 +1,72 @@
+include ./html/mixins.pug
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Страница товара
+    link(rel="stylesheet", href="./css/style.min.css")
+    script(defer src="./js/app.min.js")
+  body.product-page
+    include ./html/header.pug
+    .main 
+      +breadcrumbs([ 
+        ["#", "Главная"], 
+        ["#", "Каталог"], 
+        ["#", "Штаны"], 
+        ["#", "Удлиненные шорты"], 
+        ])
+      section.product.section
+        .container
+          .product__container.row
+            .col-9
+              ul.product__images.row
+                li.zoom-img.product__images-item.col-6
+                  button.product__images-btn(type="button")
+                    img.product__images-img(src="@img/product-image-1.jpg", alt="Image")
+                li.zoom-img.product__images-item.col-6 
+                  button.product__images-btn(type="button")
+                    img.product__images-img(src="@img/product-image-2.jpg", alt="Image")
+                li.zoom-img.product__images-item.col-6 
+                  button.product__images-btn(type="button")
+                    img.product__images-img(src="@img/product-image-3.jpg", alt="Image")
+                li.zoom-img.product__images-item.col-6 
+                  button.product__images-btn(type="button")
+                    img.product__images-img(src="@img/product-image-4.jpg", alt="Image")
+            .col-3 
+              .product__info
+                h1.main-title.product__title Удлиненные шорты
+                strong.product__pay 2 000 ₽
+                hr.hr
+                .select-wrap
+                  .select-1
+                    select.select(name="color") 
+                      option(value="blue" placeholder) Синий
+                      option(value="red") Красный
+                      option(value="green") Зелёный
+                      option(value="yellow") Жёлтый
+                  .select-2
+                    select.select(name="color") 
+                      option(value="blue" placeholder) Выберите размер
+                      option(value="red") S
+                      option(value="green") M
+                      option(value="yellow") L
+                      option(value="yellow") Xl
+                      option(value="yellow") XXl
+                .product__btn-info-wrap
+                  button.product__btn-info.underline(type="button") Таблица размеров
+                  button.product__btn-info.underline(type="button") Предзаказ
+                .product__btn-add
+                  button.btn.product__btn-add-cart(type="button") Добавить в корзину
+                  +btn-favorites('product__btn-add-favorites')
+                hr.hr
+                .product__characteristic-block
+                  .product__characteristic
+                    span.product__characteristic-name Состав: 
+                    span.product__characteristic-desc Полиэстер - 100%
+                  .product__characteristic
+                    span.product__characteristic-name Артикул: 
+                    span.product__characteristic-desc MP002XW03CCF
+ 
+                button.product__btn-more.underline(type="button") Читать полностью

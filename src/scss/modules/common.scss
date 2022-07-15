@@ -1,0 +1,125 @@
+html body {
+  color: $black;
+  background: $white;
+  @extend %txt;
+}
+
+input {
+  @extend %txt;
+  height: 48px;
+  padding: 0 16px;
+  background: transparent;
+  width: max-content;
+  border: 1px solid rgba($black, .1);
+  &::placeholder {
+    color: $gray-txt;
+  }
+}
+
+.container {
+  padding: 0 15px;
+}
+
+.btn {
+  @extend %bttn;
+  padding: 14px 44px;
+  background-color: $green;
+  color: $white;
+  transition: background-color .2s ease-in-out;
+  &:hover,
+  &:focus-visible,
+  &:active {
+    background-color: #233A32;
+  }
+  &-favorites {
+    font-size: 0;
+    padding: 16px;
+    border: 1px solid $gray-strokes;
+    transition: border .2s ease-in-out;
+    &__icon {
+      stroke: $black;
+      fill: transparent;
+      width: 16px;
+      height: 16px;
+      transition: fill .2s ease-in-out,
+      stroke .2s ease-in-out;
+    }
+    &:hover,
+    &:focus-visible {
+      border: 1px solid #BCBCBC;
+    }
+    &:active {
+      border: 1px solid $gray-strokes;
+      svg {
+        fill: $red;
+        stroke: $red;
+      }
+    }
+  }
+}
+
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.breadcrumbs {
+  margin-top: 24px;
+  margin-bottom: 40px;
+  &__container {
+    display: flex;
+    gap: 26px;
+    @extend %mini-txt;
+  }
+  &__item {
+    &:not(:last-child) {
+      position: relative;
+      color: $gray-txt;
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        transform: translateY(calc(-50% + 1px));
+        left: calc(100% + 8px);
+        width: 9px;
+        height: 1px;
+        background: $gray-txt;
+      }
+    }
+  }
+}
+
+.main-title {
+  @extend %h2;
+}
+
+.hr {
+  margin: 24px 0;
+  border: none;
+  width: 100%;
+  border-bottom: 1px solid $gray-strokes;
+}
+
+.section {
+  margin-bottom: 120px;
+}
+
+.select {
+  &-wrap {
+    @extend %mini-txt;
+  }
+}
+
+.underline {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid $black;
+  }
+}
