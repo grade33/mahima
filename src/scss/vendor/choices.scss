@@ -101,10 +101,9 @@ $choices-z-index: 1;
   }
 
   &::after {
-    content: url('@img/select-arrow-icon.svg');
-    width: 16px;
-    height: 8px;
+    content: url('@img/arrow-down-icon.svg');
     position: absolute;
+    height: 8px;
     top: 50%;
     transform: translateY(-50%);
     right: 16px;
@@ -166,7 +165,7 @@ $choices-z-index: 1;
   border: 1px solid #777777;
   border-radius: 0;
   min-height: unset;
-
+  transition: border-color .2s ease-in-out;
   .is-focused &,
   .is-open & {}
 
@@ -314,6 +313,7 @@ $choices-z-index: 1;
   @extend %choices-dropdown;
   border: 1px solid #777777;
   background: $white;
+  transition: border-color .2s ease-in-out;
 }
 
 .#{$choices-selector}__item {
@@ -323,6 +323,9 @@ $choices-z-index: 1;
   height: 40px;
   padding: 8px 16px 8px 10px;
   height: 56px;
+  @media (max-width: 767px) {
+    height: 50px;
+  }
   display: flex;
   align-items: center;
 }
@@ -397,6 +400,17 @@ $choices-z-index: 1;
 
 .#{$choices-selector}__item--choice.#{$choices-selector}__placeholder {
   display: none;
+}
+
+
+.#{$choices-selector} {
+  &:hover,
+  &:focus-visible {
+    .#{$choices-selector}__list--dropdown,
+    .#{$choices-selector}__inner {
+      border-color: lighten(#777, 30%);
+    }
+  }
 }
 
 /* =====  End of Choices  ====== */

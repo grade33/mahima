@@ -1,0 +1,45 @@
+section.email-form
+  .container 
+    .email-form__container
+      .email-form__img-wrap
+        img.email-form__img(src="@img/email-form.jpg", alt="")
+      form.email-form__form(action="#") 
+        h2.email-form__title Получайте уникальные летние скидки! 
+        .email-form__field-wrap
+          input.email-form__field(type="email" placeholder="E-mail")
+          button.btn.email-form__btn(type="submit") Получить 
+
+footer.footer
+  .container.footer__container
+    .footer__content.row
+      a.footer__logo(href="#") 
+        img.footer__logo-icon(src="@img/logo-footer.png", alt="Logo")
+      .footer__nav
+        strong.footer__title Навигация
+        nav.footer__list
+          a.footer__text(href="#") Каталог
+          a.footer__text(href="#") Избранное
+          a.footer__text(href="#") Помощь
+          a.footer__text(href="#") Дилерам
+          a.footer__text(href="#") Блог
+      .footer__acc
+        strong.footer__title Аккаунт
+        .footer__list
+          a.footer__text(href="#") Вход
+          a.footer__text(href="#") Регистрация
+      .footer__payment
+        strong.footer__title Способы оплаты
+        nav.footer__list
+          .footer__payment-list
+            a.footer__payment-link(href="#") 
+              img.footer__payment-icon(src="@img/mir.png", alt="MIR")
+            a.footer__payment-link(href="#") 
+              img.footer__payment-icon(src="@img/visa.png", alt="Visa")
+            a.footer__payment-link(href="#") 
+              img.footer__payment-icon(src="@img/mastercard.png", alt="MasterCard")
+          p.footer__payment-desc Также вы можете оплатить покупки наличными при получении
+    .footer__bottom 
+      span.footer__copyright.footer__info Copyright © 2022. All rights reserved.
+      a.footer__info(href="#") Terms of use
+      a.footer__info(href="#") Privacy policy
+

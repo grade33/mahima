@@ -17,56 +17,143 @@ html(lang="ru")
         ["#", "Штаны"], 
         ["#", "Удлиненные шорты"], 
         ])
-      section.product.section
+      
+      section.product
         .container
-          .product__container.row
-            .col-9
-              ul.product__images.row
-                li.zoom-img.product__images-item.col-6
-                  button.product__images-btn(type="button")
-                    img.product__images-img(src="@img/product-image-1.jpg", alt="Image")
-                li.zoom-img.product__images-item.col-6 
-                  button.product__images-btn(type="button")
-                    img.product__images-img(src="@img/product-image-2.jpg", alt="Image")
-                li.zoom-img.product__images-item.col-6 
-                  button.product__images-btn(type="button")
-                    img.product__images-img(src="@img/product-image-3.jpg", alt="Image")
-                li.zoom-img.product__images-item.col-6 
-                  button.product__images-btn(type="button")
-                    img.product__images-img(src="@img/product-image-4.jpg", alt="Image")
-            .col-3 
-              .product__info
-                h1.main-title.product__title Удлиненные шорты
-                strong.product__pay 2 000 ₽
-                hr.hr
-                .select-wrap
-                  .select-1
-                    select.select(name="color") 
-                      option(value="blue" placeholder) Синий
-                      option(value="red") Красный
-                      option(value="green") Зелёный
-                      option(value="yellow") Жёлтый
-                  .select-2
-                    select.select(name="color") 
-                      option(value="blue" placeholder) Выберите размер
-                      option(value="red") S
-                      option(value="green") M
-                      option(value="yellow") L
-                      option(value="yellow") Xl
-                      option(value="yellow") XXl
-                .product__btn-info-wrap
-                  button.product__btn-info.underline(type="button") Таблица размеров
-                  button.product__btn-info.underline(type="button") Предзаказ
-                .product__btn-add
-                  button.btn.product__btn-add-cart(type="button") Добавить в корзину
-                  +btn-favorites('product__btn-add-favorites')
-                hr.hr
-                .product__characteristic-block
-                  .product__characteristic
-                    span.product__characteristic-name Состав: 
-                    span.product__characteristic-desc Полиэстер - 100%
-                  .product__characteristic
-                    span.product__characteristic-name Артикул: 
-                    span.product__characteristic-desc MP002XW03CCF
- 
-                button.product__btn-more.underline(type="button") Читать полностью
+          .product__container.grid
+            ul.product__images.grid.col-9.col-xl-8.col-lg-6.col-md-12
+              li.product__images-item.col-6.col-lg-12.col-md-6
+                img.product__images-img(src="@img/product-image-1.jpg", alt="Image")
+              li.product__images-item.col-6.col-lg-12.col-md-6
+                img.product__images-img(src="@img/product-image-2.jpg", alt="Image")
+              li.product__images-item.col-6.col-lg-12.col-md-6
+                img.product__images-img(src="@img/product-image-3.jpg", alt="Image")
+              li.product__images-item.col-6.col-lg-12.col-md-6
+                img.product__images-img(src="@img/product-image-4.jpg", alt="Image")
+            .product__info.col-3.col-xl-4.col-lg-6.col-md-12
+              h1.section-title.product__title Удлиненные шорты
+              strong.product__pay 2 000 ₽
+              hr.hr
+              button.product__btn-info.product__btn-info_tablet.underline(type="button") Таблица размеров
+              .product__select-wrap.grid
+                .product__select-1.col-12.col-md-6.col-sm-12
+                  select.select(name="color") 
+                    option(value="blue" placeholder) Синий
+                    option(value="red") Красный
+                    option(value="green") Зелёный
+                    option(value="yellow") Жёлтый
+                .product__select-2.col-12.col-md-6.col-sm-12
+                  select.select(name="color") 
+                    option(value="blue" placeholder) Выберите размер
+                    option(value="red") S
+                    option(value="green") M
+                    option(value="yellow") L
+                    option(value="yellow") Xl
+                    option(value="yellow") XXl
+              .product__btn-info-wrap
+                button.product__btn-info.underline(type="button") Таблица размеров
+                button.product__btn-info.underline(type="button") Предзаказ
+              .product__btn-add
+                +btn('product__btn-add-cart','Добавить в корзину')
+                +btn-favorites('btn-favorites_rec product__btn-add-favorites')
+              hr.hr
+              .product__characteristic-block
+                .product__characteristic
+                  span.product__characteristic-name Состав: 
+                  span.product__characteristic-desc Полиэстер - 100%
+                .product__characteristic
+                  span.product__characteristic-name Артикул: 
+                  span.product__characteristic-desc MP002XW03CCF
+              button.product__btn-more.underline(type="button") Читать полностью
+      
+      section.similar-products
+        .container.similar-products__container 
+          h2.section-title.similar-products__title Похожие товары
+          .swiper.similar-products__swiper
+            .swiper-button-block
+              button.swiper-button.swiper-button-prev(type="button")
+                img(src="@img/slider-arrow-icon.svg", alt="")
+              button.swiper-button.swiper-button-next(type="button")
+                img(src="@img/slider-arrow-icon.svg", alt="")
+            ul.swiper-wrapper
+              li.product-item.swiper-slide
+                .product-item__img-wrap
+                  img.product-item__img(src="@img/product-similar-1.jpg", alt="Product Img")
+                  +btn-favorites('product-item__favorites')
+                strong.product-item__pay 999 ₽
+                h3.product-item__name Толстовка
+              li.product-item.swiper-slide
+                .product-item__img-wrap
+                  img.product-item__img(src="@img/product-similar-2.jpg", alt="Product Img")
+                  +btn-favorites('product-item__favorites')
+                strong.product-item__pay 2 499 ₽
+                h3.product-item__name Рубашка из вискозы с роговыми пуговицами
+              li.product-item.swiper-slide
+                .product-item__img-wrap
+                  img.product-item__img(src="@img/product-similar-3.jpg", alt="Product Img")
+                  +btn-favorites('product-item__favorites')
+                strong.product-item__pay 600 ₽
+                h3.product-item__name Джемпер кроёный
+              li.product-item.swiper-slide
+                .product-item__img-wrap
+                  img.product-item__img(src="@img/product-similar-4.jpg", alt="Product Img")
+                  +btn-favorites('product-item__favorites')
+                strong.product-item__pay 1 200 ₽
+                h3.product-item__name Прямая юбка
+              li.product-item.swiper-slide
+                .product-item__img-wrap
+                  img.product-item__img(src="@img/product-similar-1.jpg", alt="Product Img")
+                  +btn-favorites('product-item__favorites')
+                strong.product-item__pay 999 ₽
+                h3.product-item__name Толстовка
+              li.product-item.swiper-slide
+                .product-item__img-wrap
+                  img.product-item__img(src="@img/product-similar-2.jpg", alt="Product Img")
+                  +btn-favorites('product-item__favorites')
+                strong.product-item__pay 2 499 ₽
+                h3.product-item__name Рубашка из вискозы с роговыми пуговицами
+              li.product-item.swiper-slide
+                .product-item__img-wrap
+                  img.product-item__img(src="@img/product-similar-3.jpg", alt="Product Img")
+                  +btn-favorites('product-item__favorites')
+                strong.product-item__pay 600 ₽
+                h3.product-item__name Джемпер кроёный
+              li.product-item.swiper-slide
+                .product-item__img-wrap
+                  img.product-item__img(src="@img/product-similar-4.jpg", alt="Product Img")
+                  +btn-favorites('product-item__favorites')
+                strong.product-item__pay 1 200 ₽
+                h3.product-item__name Прямая юбка
+      
+      section.review
+        .container.review__container
+          h2.section-title.review__title 
+            |Отзывы (
+            span.review__title_quantity 6
+            |)
+          +rating('review__main-rating',5)
+          +btn('review__btn-write','Написать отзыв')
+          .grid
+            ul.review__list.col-8.col-xl-9.col-lg-12
+              li.review__item 
+                .review__name-rating 
+                  h3.review__name Елена
+                  +rating('review__item-rating',4)
+                time.review__date(datetime="2022-06-16") 16 июня 2022
+                p.review__desc Плюсы: великолепно сидит, выглядит, не сильно мнётся, не прилипает шерсть и мусор. Минусы: не дышит, покалывает, не очень приятна к телу. Мне хотелось льняную рубашку на лето. Но она скорее рубашка на все сезоны. В офис, на повседневную жизнь. Она как легкий плащ. В пасмурную летнюю погоду в ней будет классно. Не могу до конца определиться оставить или заказать что-то ещё. Выглядит оч классно, но не отвечает моему изначальному запросу дышащей рубашки на лето. Возможно, просто нужно купить вторую.
+              li.review__item 
+                .review__name-rating 
+                  h3.review__name Ольга
+                  +rating('review__item-rating',5)
+                time.review__date(datetime="2022-06-15") 15 июня 2022
+                p.review__desc На 175 ог 97 - прекрасно 48 размер, наконец то не короткие рукава и приличная длина! Вообще костюм шикарный как и большинство вещей из лимитки. Только с размером брюк беда
+              li.review__item 
+                .review__name-rating 
+                  h3.review__name Евгения
+                  +rating('review__item-rating',5)
+                time.review__date(datetime="2022-06-5") 5 июня 2022
+                p.review__desc Рубашка классная. Материал тонкий, немного жатый. Ткань приятная к телу. Летом будет не жарко, продувает. Сзади немного удлинённая. На рост 170 ОГ 88 от 72 оверсайз
+            button.review__download-more.col-8(type="button")
+              img.review__download-more-icon(src="@img/arrow-down-icon.svg", alt="")
+      
+    include ./html/footer.pug

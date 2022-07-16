@@ -1,15 +1,1 @@
-<?xml version="1.0" encoding="utf-8"?><svg viewBox="0 0 16 17" xmlns="http://www.w3.org/2000/svg"
-  xmlns:xlink="http://www.w3.org/1999/xlink">
-  <style>
-    :root>svg {
-      display: none
-    }
-
-    :root>svg:target {
-      display: block
-    }
-  </style><svg viewBox="0 0 16 17" id="favorites" xmlns="http://www.w3.org/2000/svg">
-    <path
-      d="M15.5 5.946c0 1.814-1.146 3.728-2.666 5.493-1.309 1.52-2.825 2.85-3.942 3.832l-.475.419a.643.643 0 01-.834 0l-.475-.419c-1.117-.981-2.633-2.313-3.942-3.832C1.646 9.674.5 7.76.5 5.946c0-2.54 1.088-3.818 2.366-4.357 1.332-.56 2.968-.363 4.08.26.638.36 1.47.36 2.109 0 1.111-.623 2.747-.82 4.079-.26 1.278.54 2.366 1.817 2.366 4.357z" />
-  </svg>
-</svg>
+<?xml version="1.0" encoding="utf-8"?><svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><style>:root>svg{display:none}:root>svg:target{display:block}</style><svg viewBox="0 0 16 17" id="favorites" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 5.946c0 1.814-1.146 3.728-2.666 5.493-1.309 1.52-2.825 2.85-3.942 3.832l-.475.419a.643.643 0 01-.834 0l-.475-.419c-1.117-.981-2.633-2.313-3.942-3.832C1.646 9.674.5 7.76.5 5.946c0-2.54 1.088-3.818 2.366-4.357 1.332-.56 2.968-.363 4.08.26.638.36 1.47.36 2.109 0 1.111-.623 2.747-.82 4.079-.26 1.278.54 2.366 1.817 2.366 4.357z"/></svg><svg viewBox="0 0 20 20" id="star" xmlns="http://www.w3.org/2000/svg"><path d="M10 2l2.962 4.923 5.598 1.296-3.767 4.338.497 5.724L10 16.04l-5.29 2.241.497-5.724L1.44 8.22l5.598-1.296L10 2z" stroke="#DE3C1A"/></svg></svg>

@@ -1,11 +1,11 @@
 .visually-hidden {
-  clip: rect(0 0 0 0);
-  clip-path: inset(50%);
-  height: 0px;
-  overflow: hidden;
-  position: absolute;
-  white-space: nowrap;
-  width: 0px;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  height: 0px !important;
+  overflow: hidden !important;
+  position: absolute !important;
+  white-space: nowrap !important;
+  width: 0px !important;
 }
 
 html,
@@ -35,7 +35,7 @@ ol {
   list-style: none;
 }
 
-a,img,svg {
+a,img,svg,strong {
   display: inline-block;
 }
 

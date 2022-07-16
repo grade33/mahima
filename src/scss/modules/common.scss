@@ -1,63 +1,260 @@
+html {
+  font-size: 16px;
+  cursor: url("@img/cursor.svg"), pointer;
+}
+
 html body {
   color: $black;
   background: $white;
-  @extend %txt;
+  @include txt;
 }
 
 input {
-  @extend %txt;
+  @include txt;
   height: 48px;
   padding: 0 16px;
   background: transparent;
   width: max-content;
   border: 1px solid rgba($black, .1);
+
   &::placeholder {
     color: $gray-txt;
   }
 }
 
+section {
+  margin-bottom: 120px;
+
+  @media (max-width: $lg) {
+    margin-bottom: 90px;
+  }
+
+  @media (max-width: $md) {
+    margin-bottom: 80px;
+  }
+}
+
 .container {
-  padding: 0 15px;
+  padding: 0 20px;
+  margin: 0 auto;
+  max-width: calc($cont-xl + 40px);
+  @media (max-width: $xl) {
+    max-width: calc($cont-lg + 40px);
+  }
+  @media (max-width: $lg) {
+    max-width: calc($cont-md + 40px);
+  }
+  @media (max-width: $md) {
+    max-width: calc($cont-sm + 40px);
+  }
 }
 
 .btn {
-  @extend %bttn;
+  @include bttn;
   padding: 14px 44px;
   background-color: $green;
   color: $white;
   transition: background-color .2s ease-in-out;
+
   &:hover,
   &:focus-visible,
   &:active {
     background-color: #233A32;
   }
-  &-favorites {
-    font-size: 0;
-    padding: 16px;
-    border: 1px solid $gray-strokes;
-    transition: border .2s ease-in-out;
-    &__icon {
-      stroke: $black;
-      fill: transparent;
-      width: 16px;
-      height: 16px;
-      transition: fill .2s ease-in-out,
+
+  @media (max-width: $sm) {
+    width: 100%;
+  }
+}
+
+.btn-favorites {
+  font-size: 0;
+  padding: 16px;
+
+  &__icon {
+    stroke: $black;
+    fill: transparent;
+    width: 16px;
+    height: 16px;
+    transition: fill .2s ease-in-out,
       stroke .2s ease-in-out;
+  }
+
+  &:hover,
+  &:focus-visible {
+    border-color: #BCBCBC;
+  }
+
+  &:active,
+  &_active {
+    border-color: $gray-strokes;
+
+    svg {
+      fill: $red;
+      stroke: $red;
     }
-    &:hover,
-    &:focus-visible {
-      border: 1px solid #BCBCBC;
+  }
+
+  &_rec {
+    transition: border-color .2s ease-in-out;
+    border: 1px solid $gray-strokes;
+  }
+}
+
+.popup {
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  background: rgba($black, .6);
+  transition: opacity .3s ease-in-out,
+    visibility .3s ease-in-out;
+
+  &_active {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+.menu {
+  padding-left: 5%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  width: 60vw;
+  height: 100vh;
+  margin-left: auto;
+  background: $white;
+  overflow: auto;
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform .3s ease-in-out,
+    visibility .3s ease-in-out;
+
+  &_active {
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+  }
+
+  .nav,
+  .nav-acc,
+  .header__tel-time {
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 0;
+    gap: 25px;
+  }
+
+  @media (min-width: calc($lg + 1px)) {
+    display: none;
+  }
+}
+
+.burger {
+  box-sizing: content-box;
+  padding: 5px 2px 4px;
+
+  &__list {
+    position: relative;
+    z-index: 25;
+    min-width: 20px;
+    height: 15px;
+  }
+
+  &__item {
+    position: absolute;
+    left: 0;
+
+    &:first-child {
+      top: 0;
     }
-    &:active {
-      border: 1px solid $gray-strokes;
-      svg {
-        fill: $red;
-        stroke: $red;
+
+    &:nth-child(2) {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    &:last-child {
+      bottom: 0;
+    }
+
+    display: block;
+    width: 100%;
+    height: 1px;
+    background: $black;
+    transition: opacity .3s ease-in-out,
+    visibility .3s ease-in-out,
+    top .3s ease-in-out,
+    left .3s ease-in-out,
+    transform .3s ease-in-out;
+  }
+
+  &_active {
+    .burger__item {
+      top: 50%;
+      left: 0;
+
+      &:nth-child(2) {
+        visibility: hidden;
+        opacity: 0;
+      }
+
+      &:first-child {
+        transform: translateY(-50%) rotate(45deg);
+      }
+
+      &:last-child {
+        transform: translateY(-50%) rotate(-45deg);
       }
     }
   }
 }
 
+.search {
+  flex-grow: 1;
+  display: flex;
+
+  &__field {
+    flex: none;
+    background: none;
+    border: none;
+    width: 100%;
+    height: unset;
+    border-bottom: 1px solid $black;
+    max-width: 0;
+    margin-left: 0;
+    transform: scaleX(0);
+    visibility: hidden;
+    transition: max-width .5s ease-in-out,
+      margin-left .5s ease-in-out,
+      transform .5s ease-in-out,
+      visibility .5s ease-in-out;
+  }
+
+  &__btn {
+    font-size: 0;
+    flex: none;
+  }
+
+  &_active {
+    .search__field {
+      padding: 0 5px;
+      margin-left: 7px;
+      transform: scaleX(1);
+      max-width: 100%;
+      visibility: visible;
+    }
+  }
+}
 
 .nav {
   display: flex;
@@ -65,18 +262,71 @@ input {
   gap: 24px;
 }
 
+.nav-acc {
+  display: flex;
+  align-items: center;
+  gap: 33px;
+}
+
+.swiper {
+  &-button {
+    &-block {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $gray-bg;
+    border-radius: 50%;
+    transition: background-color .2s ease-in-out;
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      background: $gray-strokes;
+    }
+
+    &:disabled {
+      opacity: .4;
+    }
+
+    img {
+      transform: translateX(1px);
+    }
+
+    &-prev {
+      img {
+        transform: translateX(-1px) rotate(180deg);
+      }
+    }
+  }
+}
+
 .breadcrumbs {
   margin-top: 24px;
   margin-bottom: 40px;
+
+  @media (max-width: $md) {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
   &__container {
     display: flex;
     gap: 26px;
-    @extend %mini-txt;
+    @include mini-txt;
   }
+
   &__item {
     &:not(:last-child) {
       position: relative;
       color: $gray-txt;
+
       &::after {
         content: '';
         position: absolute;
@@ -91,8 +341,72 @@ input {
   }
 }
 
-.main-title {
-  @extend %h2;
+.product-item {
+  &__img {
+    &-wrap {
+      position: relative;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__favorites {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__pay {
+    @include h3;
+    margin-bottom: 2px;
+  }
+
+  &__name {}
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  &__icon {
+    fill: transparent;
+    width: 18px;
+    height: 18px;
+
+    &_fill {
+      fill: $red;
+    }
+  }
+}
+
+.section-title {
+  @include h2;
+}
+
+.underline {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid $black;
+    transition: border-color .2s ease-in-out;
+  }
+
+  &:hover,
+  &:focus-visible,
+  &:active {
+    &::after {
+      border-color: transparent;
+    }
+  }
+}
+
+.section {
+  margin-bottom: 120px;
 }
 
 .hr {
@@ -102,24 +416,10 @@ input {
   border-bottom: 1px solid $gray-strokes;
 }
 
-.section {
-  margin-bottom: 120px;
-}
+.choices {
+  @include mini-txt;
 
-.select {
-  &-wrap {
-    @extend %mini-txt;
-  }
-}
-
-.underline {
-  position: relative;
-  &::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    border-bottom: 1px solid $black;
+  @media (max-width: $md) {
+    @include txt;
   }
 }

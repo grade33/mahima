@@ -8,7 +8,25 @@ mixin breadcrumbs(obj)
       li.breadcrumbs__item
         span.breadcrumbs__text=lastEl[1]
 
+mixin btn(Class, text)
+  button.btn(class=Class type="button")=text
+
 mixin btn-favorites(Class)
   button.btn-favorites(class=Class type="button") 
     svg.btn-favorites__icon
       use(xlink:href="@img/sprite.svg#favorites")
+
+mixin rating(Class,star)
+  ul.rating(class=Class)
+    - let i = 1;
+    while i <= 5
+      if star > 0
+        li.rating__item 
+          svg.rating__icon.rating__icon_fill()
+            use(xlink:href="@img/sprite.svg#star")
+        - star--;
+      else 
+        li.rating__item
+          svg.rating__icon.rating__icon()
+            use(xlink:href="@img/sprite.svg#star")
+      - i++;
