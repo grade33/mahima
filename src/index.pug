@@ -20,29 +20,29 @@ html(lang="ru")
       
       section.product
         .container
-          .product__container.grid
-            ul.product__images.grid.col-9.col-xl-8.col-lg-6.col-md-12
-              li.product__images-item.col-6.col-lg-12.col-md-6
+          .product__container.grid 
+            ul.product__images.grid.col-xl-9.col-lg-8.col-md-6.col-12
+              li.product__images-item.col-lg-6.col-md-12.col-sm-6
                 img.product__images-img(src="@img/product-image-1.jpg", alt="Image")
-              li.product__images-item.col-6.col-lg-12.col-md-6
+              li.product__images-item.col-lg-6.col-md-12.col-sm-6
                 img.product__images-img(src="@img/product-image-2.jpg", alt="Image")
-              li.product__images-item.col-6.col-lg-12.col-md-6
+              li.product__images-item.col-lg-6.col-md-12.col-sm-6
                 img.product__images-img(src="@img/product-image-3.jpg", alt="Image")
-              li.product__images-item.col-6.col-lg-12.col-md-6
+              li.product__images-item.col-lg-6.col-md-12.col-sm-6
                 img.product__images-img(src="@img/product-image-4.jpg", alt="Image")
-            .product__info.col-3.col-xl-4.col-lg-6.col-md-12
+            .product__info.col-xl-3.col-lg-4.col-md-6.col-12
               h1.section-title.product__title Удлиненные шорты
               strong.product__pay 2 000 ₽
               hr.hr
               button.product__btn-info.product__btn-info_tablet.underline(type="button") Таблица размеров
               .product__select-wrap.grid
-                .product__select-1.col-12.col-md-6.col-sm-12
+                .product__select-1.col-sm-6.col-12
                   select.select(name="color") 
                     option(value="blue" placeholder) Синий
                     option(value="red") Красный
                     option(value="green") Зелёный
                     option(value="yellow") Жёлтый
-                .product__select-2.col-12.col-md-6.col-sm-12
+                .product__select-2.col-sm-6.col-12
                   select.select(name="color") 
                     option(value="blue" placeholder) Выберите размер
                     option(value="red") S
@@ -66,15 +66,43 @@ html(lang="ru")
                   span.product__characteristic-desc MP002XW03CCF
               button.product__btn-more.underline(type="button") Читать полностью
       
+      section.review-pre-order
+        .container.review-pre-order__container
+          .acc.review-pre-order__review
+            .acc__head
+              button.acc__trigger(type="button")
+              .acc__title-wrap
+                h2.acc__title Отывы
+                +rating('',5)
+              img.acc__icon(src="@img/arrow-down-icon.svg", alt="")
+            .acc__panel
+              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, blanditiis.
+              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, blanditiis.
+              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, blanditiis.
+              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, blanditiis.
+              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, blanditiis.
+          .acc.review-pre-order__pre-order
+            .acc__head
+              button.acc__trigger(type="button")
+              .acc__title-wrap
+                h2.acc__title Предзаказ
+              img.acc__icon(src="@img/arrow-down-icon.svg", alt="")
+            .acc__panel
+              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, blanditiis.
+              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, blanditiis.
+              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, blanditiis.
+              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, blanditiis.
+              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, blanditiis.
+
       section.similar-products
         .container.similar-products__container 
           h2.section-title.similar-products__title Похожие товары
           .swiper.similar-products__swiper
             .swiper-button-block
               button.swiper-button.swiper-button-prev(type="button")
-                img(src="@img/slider-arrow-icon.svg", alt="")
+                img(src="@img/arrow-down-icon.svg", alt="")
               button.swiper-button.swiper-button-next(type="button")
-                img(src="@img/slider-arrow-icon.svg", alt="")
+                img(src="@img/arrow-down-icon.svg", alt="")
             ul.swiper-wrapper
               li.product-item.swiper-slide
                 .product-item__img-wrap
@@ -124,7 +152,7 @@ html(lang="ru")
                   +btn-favorites('product-item__favorites')
                 strong.product-item__pay 1 200 ₽
                 h3.product-item__name Прямая юбка
-      
+
       section.review
         .container.review__container
           h2.section-title.review__title 
@@ -134,7 +162,7 @@ html(lang="ru")
           +rating('review__main-rating',5)
           +btn('review__btn-write','Написать отзыв')
           .grid
-            ul.review__list.col-8.col-xl-9.col-lg-12
+            ul.review__list.col-xl-8.col-lg-9
               li.review__item 
                 .review__name-rating 
                   h3.review__name Елена
@@ -153,7 +181,8 @@ html(lang="ru")
                   +rating('review__item-rating',5)
                 time.review__date(datetime="2022-06-5") 5 июня 2022
                 p.review__desc Рубашка классная. Материал тонкий, немного жатый. Ткань приятная к телу. Летом будет не жарко, продувает. Сзади немного удлинённая. На рост 170 ОГ 88 от 72 оверсайз
-            button.review__download-more.col-8(type="button")
+            button.review__download-more(type="button")
               img.review__download-more-icon(src="@img/arrow-down-icon.svg", alt="")
-      
+    
+
     include ./html/footer.pug

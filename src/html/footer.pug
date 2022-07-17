@@ -1,33 +1,35 @@
 section.email-form
-  .container 
-    .email-form__container
-      .email-form__img-wrap
-        img.email-form__img(src="@img/email-form.jpg", alt="")
-      form.email-form__form(action="#") 
-        h2.email-form__title Получайте уникальные летние скидки! 
-        .email-form__field-wrap
-          input.email-form__field(type="email" placeholder="E-mail")
-          button.btn.email-form__btn(type="submit") Получить 
+  .container.email-form__container.grid
+      .email-form__content.grid.col-xl-12.col-lg-9.col-12
+        .email-form__img-wrap.col-xl-6.col-12
+          img.email-form__img(src="@img/email-form.jpg", alt="")
+        form.email-form__form.col-xl-6.col-12(action="#") 
+          h2.email-form__title Получайте уникальные летние скидки! 
+          .email-form__field-wrap
+            input.email-form__field(type="email" placeholder="E-mail")
+            button.btn.email-form__btn(type="submit") Получить 
 
 footer.footer
   .container.footer__container
-    .footer__content.row
-      a.footer__logo(href="#") 
+    .footer__content.grid
+      a.footer__logo.col-md-3.col-sm-12.col-6(href="#") 
         img.footer__logo-icon(src="@img/logo-footer.png", alt="Logo")
-      .footer__nav
-        strong.footer__title Навигация
-        nav.footer__list
-          a.footer__text(href="#") Каталог
-          a.footer__text(href="#") Избранное
-          a.footer__text(href="#") Помощь
-          a.footer__text(href="#") Дилерам
-          a.footer__text(href="#") Блог
-      .footer__acc
-        strong.footer__title Аккаунт
-        .footer__list
-          a.footer__text(href="#") Вход
-          a.footer__text(href="#") Регистрация
-      .footer__payment
+      .col-xl-2.col
+      .footer__nav-wrap.grid.col-xl-4.col-md-5.col-12
+        .footer__nav.col-sm-6.col-12
+          strong.footer__title Навигация
+          nav.footer__list
+            a.footer__text(href="#") Каталог
+            a.footer__text(href="#") Избранное
+            a.footer__text(href="#") Помощь
+            a.footer__text(href="#") Дилерам
+            a.footer__text(href="#") Блог
+        .footer__acc.col-sm-6.col-12
+          strong.footer__title Аккаунт
+          .footer__list
+            a.footer__text(href="#") Вход
+            a.footer__text(href="#") Регистрация
+      .footer__payment.col-xl-3.col-md-4.col-sm-10.col-9
         strong.footer__title Способы оплаты
         nav.footer__list
           .footer__payment-list
@@ -40,6 +42,7 @@ footer.footer
           p.footer__payment-desc Также вы можете оплатить покупки наличными при получении
     .footer__bottom 
       span.footer__copyright.footer__info Copyright © 2022. All rights reserved.
-      a.footer__info(href="#") Terms of use
-      a.footer__info(href="#") Privacy policy
+      .footer__info-link-wrap
+        a.footer__info(href="#") Terms of use
+        a.footer__info(href="#") Privacy policy
 

@@ -28,19 +28,20 @@ export function isBurger() {
   const menu = document.querySelector('.menu')
   const popup = menu.parentElement
   burgerBtn.addEventListener('click', () => {
-    burgerBtn.classList.toggle('burger_active')
-    popup.classList.toggle('popup_active')
-    menu.classList.toggle('menu_active')
+    burgerBtn.classList.add('burger_active')
+    popup.classList.add('popup_active')
+    menu.classList.add('menu_active')
+    document.body.parentElement.style.overflowY = 'hidden'
   })
   popup.addEventListener('click', (e) => {
     if (!e.target.closest('.menu')) {
       burgerBtn.classList.remove('burger_active')
       popup.classList.remove('popup_active')
       menu.classList.remove('menu_active')
+      document.body.parentElement.style.overflowY = 'unset'
     }
   })
 }
-
 
 export function isSearch() {
   const search = document.querySelector('.search')
@@ -61,5 +62,20 @@ export function isSearch() {
         header.querySelector('.header__user-nav').classList.remove('visually-hidden')
       }, 500);
     }
+  })
+}
+
+export function isAccordion() {
+  document.querySelectorAll('.acc').forEach(acc => {
+    const accBtn = acc.querySelector('.acc__trigger')
+    const accPanel = acc.querySelector('.acc__panel')
+    accBtn.addEventListener('click', function () {
+      acc.classList.toggle('acc_active')
+      if (accPanel.style.maxHeight) {
+        accPanel.style.maxHeight = null;
+      } else {
+        accPanel.style.maxHeight = accPanel.scrollHeight + "px";
+      }
+    })
   })
 }

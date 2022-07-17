@@ -126,16 +126,34 @@
     padding-top: 40px;
     padding-bottom: 24px;
     border-top: 1px solid rgba($black, .1);
+    @media (max-width: $md) {
+      row-gap: 36px;
+    }
+    @media (max-width: $sm) {
+      row-gap: 32px;
+    }
   }
-
+  &__content {
+    @media (max-width: $md) {
+      width: 50%;
+      margin: 0 auto;
+      row-gap: 36px;
+    }
+    @media (max-width: $sm) {
+      width: 100%;
+      row-gap: 32px;
+    }
+  }
   &__logo {
     &-icon {
       @media (max-width: $xl) {
         width: 180px;
       }
+
       @media (max-width: $lg) {
         width: 150px;
       }
+
       @media (max-width: $md) {
         width: 100%;
       }
@@ -145,6 +163,10 @@
   &__title {
     @include h3;
     margin-bottom: 24px;
+    @media (max-width: $sm) {
+      font-size: 1.125rem;
+      line-height: 1.27;
+    }
   }
 
   &__list {
@@ -153,17 +175,27 @@
     gap: 10px;
   }
 
+  &__nav-wrap {
+    row-gap: 32px;
+  }
+
   &__nav,
   &__acc {
     margin-left: auto;
     margin-right: auto;
     width: fit-content;
+    @media (max-width: $md) {
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
 
   &__payment {
     margin-left: auto;
     max-width: 233px;
-
+    @media (max-width: $md) {
+      margin-left: 0;
+    }
     &-list {
       display: flex;
       align-items: center;
@@ -179,11 +211,33 @@
     display: flex;
     align-items: center;
     gap: 24px;
+    @media (max-width: $md) {
+      width: 50%;
+      margin: 0 auto;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    @media (max-width: $sm) {
+      width: 100%;
+    }
   }
-
+  
   &__info {
+    &-link-wrap {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      @media (max-width: $md) {
+        gap: 16px;
+      }
+    }
     display: inline-block;
     @include mini-txt;
+    opacity: 0.4;
+    @media (max-width: $sm) {
+      font-size: 0.75rem;
+      line-height: 1.3;
+    }
   }
 
   &__copyright {
@@ -219,6 +273,7 @@
 
   &__title {
     margin-bottom: 14px;
+
     @media (max-width: $lg) {
       margin-bottom: 10px;
     }
@@ -231,6 +286,7 @@
     @media (max-width: $md) {
       margin-bottom: 36px;
     }
+
     @media (max-width: $sm) {
       margin-bottom: 32px;
     }
@@ -249,15 +305,19 @@
       justify-content: space-between;
       margin-bottom: 20px;
       @include mini-txt;
+
       @media (max-width: $md) {
         display: none;
       }
     }
+
     &_tablet {
       margin-bottom: 14px;
+
       @media (min-width: calc($md + 1px)) {
         display: none;
       }
+
       @media (max-width: $sm) {
         margin-bottom: 12px;
       }
@@ -268,9 +328,11 @@
     &-wrap {
       row-gap: 14px;
       margin-bottom: 10px;
+
       @media (max-width: $md) {
         margin-bottom: 8px;
       }
+
       @media (max-width: $sm) {
         row-gap: 10px;
         margin-bottom: 10px;
@@ -306,11 +368,21 @@
   &__btn-add {
     display: flex;
     gap: 8px;
+
     @media (max-width: $md) {
       margin-bottom: 36px;
     }
+
     @media (max-width: $sm) {
       margin-bottom: 32px;
+    }
+
+    &-cart {
+      flex-grow: 1;
+
+      @media(max-width: $md) {
+        flex-grow: 0;
+      }
     }
   }
 
@@ -328,6 +400,7 @@
 
   &__btn-more {
     margin-top: 10px;
+
     @media (max-width: $md) {
       margin-top: 8px;
     }
@@ -337,10 +410,21 @@
 .similar-products {
   &__title {
     margin-bottom: 24px;
+    @media (max-width: $md) {
+      margin-bottom: 16px;
+    }
   }
 
   &__swiper {
     margin-top: calc(-48px + -19px);
+
+    @media (max-width: $lg) {
+      margin-top: calc(-40px + -19px);
+    }
+
+    @media (max-width: $md) {
+      margin-top: calc(-34px + -19px);
+    }
 
     .swiper {
       &-slide {
@@ -353,6 +437,10 @@
         &-block {
           justify-content: flex-end;
           margin-bottom: 19px;
+
+          @media (max-width: $md) {
+            margin-bottom: 10px;
+          }
         }
       }
     }
@@ -360,16 +448,26 @@
 }
 
 .review {
+  @media (max-width: $md) {
+    display: none;
+  }
+
   &__title {
     margin-bottom: 10px;
   }
 
   &__main-rating {
     margin-bottom: 24px;
+
   }
 
   &__btn-write {
     margin-bottom: 40px;
+
+    @media (max-width: $lg) {
+      padding-left: 44px;
+      padding-right: 44px;
+    }
   }
 
   &__list {
@@ -406,13 +504,19 @@
   }
 }
 
+.review-pre-order {
+  @media (min-width: calc($md + 1px)) {
+    display: none;
+  }
+}
+
 .email-form {
-  &__container {
-    display: flex;
-    backdrop-filter: blur(40px);
+  &__content {
+    border: 1px solid $gray-strokes;
   }
 
   &__img {
+    width: 100%;
     height: 100%;
   }
 
@@ -421,8 +525,10 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border: 1px solid $gray-strokes;
-    border-left: none;
+
+    @media (max-width: $md) {
+      padding: 16px;
+    }
   }
 
   &__title {
@@ -433,12 +539,46 @@
   &__field {
     &-wrap {
       display: flex;
+      gap: 10px 0;
       max-width: 466px;
-      border: 1px solid rgba($black, .1);
+
+      @media (max-width: $xl) {
+        max-width: 100%;
+      }
+
+      @media (max-width: $sm) {
+        flex-direction: column;
+      }
     }
 
     flex-grow: 1;
-    border: none;
+    width: 100%;
+    border: 1px solid rgba($black, .1);
+    border-right: none;
+
+    @media (max-width: $sm) {
+      border: 1px solid rgba($black, .1);
+    }
+  }
+
+  &__btn {
+    padding-left: 44px;
+    padding-right: 44px;
+
+    @media (max-width: $xl) {
+      padding-left: 68px;
+      padding-right: 68px;
+    }
+
+    @media (max-width: $lg) {
+      padding-left: 70px;
+      padding-right: 70px;
+    }
+
+    @media (max-width: $md) {
+      padding-left: 39px;
+      padding-right: 39px;
+    }
   }
 }
 
@@ -451,7 +591,7 @@
   .breadcrumbs {
     margin-bottom: 24px;
 
-    @media (max-width: 767px) {
+    @media (max-width: $lg) {
       margin-bottom: 16px;
     }
   }

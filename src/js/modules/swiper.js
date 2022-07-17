@@ -7,8 +7,8 @@ import Swiper, {
 
 const swiperSmilar = new Swiper('.similar-products__swiper', {
   modules: [Navigation],
-  slidesPerView: 4,
-  spaceBetween: 24,
+  slidesPerView: 2,
+  spaceBetween: 4,
   loop: true,
   simulateTouch: false,
   watchSlidesProgress: true,
@@ -16,5 +16,26 @@ const swiperSmilar = new Swiper('.similar-products__swiper', {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
   },
+  breakpoints: {
+    // when window width is >= 320px
+    480: {
+      slidesPerView: 2,
+      spaceBetween: 8
+    },
+    // when window width is >= 480px
+    768: {
+      slidesPerView: 3,
+      spaceBetween: 16
+    },
+    // when window width is >= 640px
+    1000: {
+      slidesPerView: 4,
+      spaceBetween: 20
+    },
+    1280: {
+      slidesPerView: 4,
+      spaceBetween: 24
+    }
+  }
 })
 

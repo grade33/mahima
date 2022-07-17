@@ -20,6 +20,11 @@ input {
   &::placeholder {
     color: $gray-txt;
   }
+
+  @media (max-width: $md) {
+    height: 44px;
+  }
+
 }
 
 section {
@@ -37,21 +42,13 @@ section {
 .container {
   padding: 0 20px;
   margin: 0 auto;
-  max-width: calc($cont-xl + 40px);
-  @media (max-width: $xl) {
-    max-width: calc($cont-lg + 40px);
-  }
-  @media (max-width: $lg) {
-    max-width: calc($cont-md + 40px);
-  }
-  @media (max-width: $md) {
-    max-width: calc($cont-sm + 40px);
-  }
+  width: 100%;
+  max-width: calc(var(--cont-this) + 40px);
 }
 
 .btn {
   @include bttn;
-  padding: 14px 44px;
+  padding: 14px 46px;
   background-color: $green;
   color: $white;
   transition: background-color .2s ease-in-out;
@@ -62,8 +59,15 @@ section {
     background-color: #233A32;
   }
 
+  @media (max-width: $md) {
+    padding-top: 11px;
+    padding-bottom: 11px;
+  }
+
   @media (max-width: $sm) {
     width: 100%;
+    padding-left: 7px !important;
+    padding-right: 7px !important;
   }
 }
 
@@ -159,13 +163,78 @@ section {
   }
 }
 
+.acc {
+  border-bottom: 1px solid $gray-strokes;
+  padding: 0 calc((100vw - var(--cont-this)) / 2);
+  margin: 0 calc((-100vw + var(--cont-this)) / 2);
+
+  @media (max-width: $sm) {
+    padding: 0 40px;
+    margin: 0 -40px;
+
+  }
+
+  transition: padding-bottom .3s ease-out;
+
+  &_active {
+    padding-bottom: 16px;
+
+    .acc__icon {
+      transform: rotate(0);
+    }
+
+    .acc__panel {
+      visibility: visible;
+    }
+  }
+
+  &__head {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: space-between;
+    padding: 16px 0;
+    text-align: left;
+    width: 100%;
+  }
+
+  &__trigger {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__panel {
+    max-height: 0;
+    overflow: hidden;
+    visibility: hidden;
+    transition: max-height .3s ease-out,
+      visibility .3s ease-out;
+  }
+
+  &__icon {
+    width: 10px;
+    transform: rotate(-90deg);
+    flex: none;
+    transition: transform .3s ease-in-out;
+  }
+}
+
 .burger {
   box-sizing: content-box;
   padding: 5px 2px 4px;
 
   &__list {
     position: relative;
-    z-index: 25;
     min-width: 20px;
     height: 15px;
   }
@@ -296,13 +365,28 @@ section {
     }
 
     img {
-      transform: translateX(1px);
+      width: 12px;
+      transform: rotate(-90deg) translateX(1px);
     }
 
     &-prev {
       img {
-        transform: translateX(-1px) rotate(180deg);
+        transform: translateX(-1px) rotate(90deg);
       }
+    }
+
+    @media (max-width: $lg) {
+      width: 40px;
+      height: 40px;
+
+      img {
+        width: 10px;
+      }
+    }
+
+    @media (max-width: $md) {
+      width: 34px;
+      height: 34px;
     }
   }
 }
@@ -346,6 +430,12 @@ section {
     &-wrap {
       position: relative;
       margin-bottom: 8px;
+      @media (max-width: $md) {
+        margin-bottom: 6px;
+      }
+      @media (max-width: $sm) {
+        margin-bottom: 4px;
+      }
     }
   }
 
@@ -360,7 +450,11 @@ section {
     margin-bottom: 2px;
   }
 
-  &__name {}
+  &__name {
+    @media (max-width: $xl) {
+      @include mini-txt;
+    }
+  }
 }
 
 .rating {
@@ -368,10 +462,23 @@ section {
   align-items: center;
   gap: 6px;
 
+  @media (max-width: $md) {
+    gap: 2px;
+  }
+
+  &__item {
+    font-size: 0;
+  }
+
   &__icon {
     fill: transparent;
     width: 18px;
     height: 18px;
+
+    @media (max-width: $md) {
+      width: 11px;
+      height: 10px;
+    }
 
     &_fill {
       fill: $red;

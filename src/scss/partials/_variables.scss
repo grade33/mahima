@@ -11,23 +11,23 @@ $lg: 999px;
 $md: 767px;
 $sm: 479px;
 
-$cont-xl: 1200px;
-$cont-lg: 960px;
-$cont-md: 728px;
-$cont-sm: 440px;
-
 :root {
   --gutter: 24px;
+  --cont-this: 1200px;
+
   @media(max-width: $xl) {
     --gutter: 20px;
+    --cont-this: 960px;
   }
 
   @media(max-width: $lg) {
     --gutter: 16px;
+    --cont-this: 728px;
   }
 
   @media(max-width: $md) {
     --gutter: 8px;
+    --cont-this: 440px;
   }
 
   @media(max-width: $sm) {
