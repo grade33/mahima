@@ -1,0 +1,47 @@
+include ./html/mixins.pug
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Блог
+    link(rel="stylesheet", href="./css/style.min.css")
+    script(defer src="./js/app.min.js")
+  body
+    include ./html/header.pug
+    main.main 
+      +breadcrumbs([ 
+        ["#", "Главная"], 
+        ["#", "Блог"], 
+        ])
+
+      section.blog
+        .container.blog__container 
+          h1.section-title.blog__title Блог
+          ul.blog__list
+            -
+              let blogArr = [
+                ['','@img/blog/blog-1.jpg', '2022-06-15', '15 июня 2022', 'Как носить модные в этом сезоне шелковые платки', 'Косынка, бандана, повязка — яркий шелковый платок с готовностью станет, чем захотите.'],
+                ['','@img/blog/blog-2.jpg', '2022-06-10', '10 июня 2022', 'Online offers: скидка 20% на летние комплекты ', 'Онлайн-предложение дня – скидка 20% на летние комплекты для женщин, мужчин и детей автоматически в корзине на сайте, в мобильном приложении и по промокоду из приложения – в магазинах, включая Дисконты. Выбирайте стильные образы!'],
+                ['','@img/blog/blog-3.jpg', '2022-06-06', '6 июня 2022', 'Семь образов с пиджаком на все случаи жизни ', 'Хватит на всё лето весну '],
+                ['','@img/blog/blog-4.jpg', '2022-06-02', '2 июня 2022', 'Красивые сумки заряженные на лето', 'Можно носить не только на пляже ']
+              ]
+            each val in blogArr
+              +blog-item(val[0],val[1],val[2],val[3],val[4],val[5])
+          .block-nav.block-nav_pagination
+            a.block-nav__button.block-nav__button_prev(href="#")
+              img(src="@img/arrow-down-icon.svg", alt="")
+            ul.block-nav__pagination
+              li
+                a.block-nav__pagination-bullet(href="#") 1
+              li
+                a.block-nav__pagination-bullet(href="#") 2
+              li
+                a.block-nav__pagination-bullet.block-nav__pagination-bullet_active(href="#") 3
+              li
+                a.block-nav__pagination-bullet(href="#") 4
+            a.block-nav__button.block-nav__button_next(href="#")
+              img(src="@img/arrow-down-icon.svg", alt="")
+    
+    include ./html/footer.pug

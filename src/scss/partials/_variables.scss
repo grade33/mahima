@@ -15,6 +15,13 @@ $sm: 479px;
   --gutter: 24px;
   --cont-this: 1200px;
 
+  --fsz-h1: 2rem;
+  --fsz-h2: 1.5rem;
+  --fsz-h3: 1.25rem;
+  --fsz-txt: 1rem;
+  --fsz-bttn: 0.875rem;
+  --fsz-mini-txt: 0.75rem;
+
   @media(max-width: $xl) {
     --gutter: 20px;
     --cont-this: 960px;
@@ -23,11 +30,22 @@ $sm: 479px;
   @media(max-width: $lg) {
     --gutter: 16px;
     --cont-this: 728px;
+
+    --fsz-h1: 1.75rem;
+    --fsz-h2: 1.375rem;
+    --fsz-h3: 1.125rem;
   }
 
   @media(max-width: $md) {
     --gutter: 8px;
     --cont-this: 440px;
+
+    --fsz-h1: 1.625rem;
+    --fsz-h2: 1.25rem;
+    --fsz-h3: 1rem;
+    --fsz-txt: 0.8125rem;
+    --fsz-bttn: 0.8125rem;
+    --fsz-mini-txt: 0.625rem;
   }
 
   @media(max-width: $sm) {

@@ -1,0 +1,42 @@
+include ./html/mixins.pug
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Корзина
+    link(rel="stylesheet", href="./css/style.min.css")
+    script(defer src="./js/app.min.js")
+  body
+    include ./html/header.pug
+    main.main 
+      +breadcrumbs([ 
+        ["#", "Главная"], 
+        ["#", "Корзина"], 
+        ])
+
+      section.cart
+        .container.cart__container 
+          h1.section-title.cart__title Корзина
+          .cart__content.grid
+            .cart__list-wrap.col-lg-9.col-md-8.col-12
+              .cart__list-quantity 
+                |В корзине 
+                span.cart__list-quantity-text 3 
+                |товара
+              ul.cart__list
+                -
+                  let cartArr = [
+                    ['','@img/product/product-7.jpg','Широкие джинсы','42(S)','Чёрный','4','2 000 ₽'],
+                    ['','@img/product/product-8.jpg','Структурный джемпер с молнией','44(M)','Белый','2','10 400 ₽'],
+                    ['','@img/product/product-5.jpg','Базовая футболка','44(M)','Жёлтый','1','599 ₽'],
+                  ]
+                each val in cartArr
+                  +cart-item(val[0],val[1],val[2],val[3],val[4],val[5],val[6])
+
+            .cart__total.col-lg-3.col-md-4.col-sm-6.col-12
+      
+      +similar-products('Вам может понравиться')
+    
+    include ./html/footer.pug

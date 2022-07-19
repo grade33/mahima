@@ -9,4 +9,6 @@ functions.isWebp();
 functions.addFavorites();
 functions.isBurger();
 functions.isSearch();
-functions.isAccordion()
+functions.isAccordion();
+
+

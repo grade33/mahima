@@ -10,10 +10,10 @@ html(lang="ru")
     script(defer src="./js/app.min.js")
   body.product-page
     include ./html/header.pug
-    .main 
+    main.main 
       +breadcrumbs([ 
         ["#", "Главная"], 
-        ["#", "Каталог"], 
+        ["./catalog.html", "Каталог"], 
         ["#", "Штаны"], 
         ["#", "Удлиненные шорты"], 
         ])
@@ -36,13 +36,13 @@ html(lang="ru")
               hr.hr
               button.product__btn-info.product__btn-info_tablet.underline(type="button") Таблица размеров
               .product__select-wrap.grid
-                .product__select-1.col-sm-6.col-12
+                .product__select-1.col-md-12.col-sm-6.col-12
                   select.select(name="color") 
                     option(value="blue" placeholder) Синий
                     option(value="red") Красный
                     option(value="green") Зелёный
                     option(value="yellow") Жёлтый
-                .product__select-2.col-sm-6.col-12
+                .product__select-2.col-md-12.col-sm-6.col-12
                   select.select(name="color") 
                     option(value="blue" placeholder) Выберите размер
                     option(value="red") S
@@ -94,64 +94,7 @@ html(lang="ru")
               p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, blanditiis.
               p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, blanditiis.
 
-      section.similar-products
-        .container.similar-products__container 
-          h2.section-title.similar-products__title Похожие товары
-          .swiper.similar-products__swiper
-            .swiper-button-block
-              button.swiper-button.swiper-button-prev(type="button")
-                img(src="@img/arrow-down-icon.svg", alt="")
-              button.swiper-button.swiper-button-next(type="button")
-                img(src="@img/arrow-down-icon.svg", alt="")
-            ul.swiper-wrapper
-              li.product-item.swiper-slide
-                .product-item__img-wrap
-                  img.product-item__img(src="@img/product-similar-1.jpg", alt="Product Img")
-                  +btn-favorites('product-item__favorites')
-                strong.product-item__pay 999 ₽
-                h3.product-item__name Толстовка
-              li.product-item.swiper-slide
-                .product-item__img-wrap
-                  img.product-item__img(src="@img/product-similar-2.jpg", alt="Product Img")
-                  +btn-favorites('product-item__favorites')
-                strong.product-item__pay 2 499 ₽
-                h3.product-item__name Рубашка из вискозы с роговыми пуговицами
-              li.product-item.swiper-slide
-                .product-item__img-wrap
-                  img.product-item__img(src="@img/product-similar-3.jpg", alt="Product Img")
-                  +btn-favorites('product-item__favorites')
-                strong.product-item__pay 600 ₽
-                h3.product-item__name Джемпер кроёный
-              li.product-item.swiper-slide
-                .product-item__img-wrap
-                  img.product-item__img(src="@img/product-similar-4.jpg", alt="Product Img")
-                  +btn-favorites('product-item__favorites')
-                strong.product-item__pay 1 200 ₽
-                h3.product-item__name Прямая юбка
-              li.product-item.swiper-slide
-                .product-item__img-wrap
-                  img.product-item__img(src="@img/product-similar-1.jpg", alt="Product Img")
-                  +btn-favorites('product-item__favorites')
-                strong.product-item__pay 999 ₽
-                h3.product-item__name Толстовка
-              li.product-item.swiper-slide
-                .product-item__img-wrap
-                  img.product-item__img(src="@img/product-similar-2.jpg", alt="Product Img")
-                  +btn-favorites('product-item__favorites')
-                strong.product-item__pay 2 499 ₽
-                h3.product-item__name Рубашка из вискозы с роговыми пуговицами
-              li.product-item.swiper-slide
-                .product-item__img-wrap
-                  img.product-item__img(src="@img/product-similar-3.jpg", alt="Product Img")
-                  +btn-favorites('product-item__favorites')
-                strong.product-item__pay 600 ₽
-                h3.product-item__name Джемпер кроёный
-              li.product-item.swiper-slide
-                .product-item__img-wrap
-                  img.product-item__img(src="@img/product-similar-4.jpg", alt="Product Img")
-                  +btn-favorites('product-item__favorites')
-                strong.product-item__pay 1 200 ₽
-                h3.product-item__name Прямая юбка
+      +similar-products('Похожие товары')
 
       section.review
         .container.review__container
@@ -184,5 +127,4 @@ html(lang="ru")
             button.review__download-more(type="button")
               img.review__download-more-icon(src="@img/arrow-down-icon.svg", alt="")
     
-
     include ./html/footer.pug

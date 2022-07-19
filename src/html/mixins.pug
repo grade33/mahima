@@ -12,7 +12,7 @@ mixin btn(Class, text)
   button.btn(class=Class type="button")=text
 
 mixin btn-favorites(Class)
-  button.btn-favorites(class=Class type="button") 
+  button.btn-favorites(class=Class type="button" aria-label="Добавить в избранное") 
     svg.btn-favorites__icon
       use(xlink:href="@img/sprite.svg#favorites")
 
@@ -30,3 +30,79 @@ mixin rating(Class,star)
           svg.rating__icon.rating__icon()
             use(xlink:href="@img/sprite.svg#star")
       - i++;
+
+mixin counter(Class)
+  .counter(class=CLass)
+    button.counter__btn.counter__btn_minus(type="button")
+    span.counter__text=counter
+    button.counter__btn.counter__btn_plus(type="button")
+
+mixin product-item(Class,img,pay,name)
+  li.product-item(class=Class)
+    .product-item__img-wrap
+      img.product-item__img(src=img, alt="Фотография одежды")
+      +btn-favorites('product-item__favorites')
+    strong.product-item__pay=pay
+    h3.product-item__name=name
+
+mixin cart-item(Class,img,title,characteristic1,characteristic2,counter,pay)
+  li.cart-item(class=Class)
+    .cart-item__inner
+      .cart-item__img-wrap 
+        img.cart-item__img(src=img, alt="Фотография одежды")
+      .cart-item__content
+        h2.cart-item__title=title
+        ul.cart-item__characteristic
+          li.cart-item__characteristic-item
+            span.cart-item__characteristic-name
+            span.cart-item__characteristic-item-text=characteristic1
+          li.cart-item__characteristic-item
+            span.cart-item__characteristic-name
+            span.cart-item__characteristic-item-text=characteristic2
+        +counter('cart-item__counter')
+        .cart-item__pay=pay
+        .cart-item__btn-wrap.cart-item__btn-wrap-desktop
+          +btn-favorites('cart-item__btn cart-item__btn-favorites')
+          button.cart-item__btn.cart-item__btn-remove(type="button" aria-label="Удалить")
+            img(src="@img/btn-remove-icon.svg", alt="")
+    .cart-item__bottom
+      +counter('cart-item__counter-mobile')
+      .cart-item__btn-wrap
+        +btn-favorites('cart-item__btn cart-item__btn-favorites')
+        button.cart-item__btn.cart-item__btn-remove(type="button" aria-label="Удалить")
+          img(src="@img/btn-remove-icon.svg", alt="")
+
+mixin blog-item(Class,img,datetime,time,title,desc)
+  li.blog-item.grid.blog__item(class=Class)
+    .blog-item__img-wrap.col-md-6.col-12
+      img.blog-item__img(src=img, alt="")
+    .blog-item__content.col-xl-5.col-md-6.col-12
+      time.blog-item__date(datetime="")=time
+      h2.blog-item__title=title
+      p.blog-item__desc=desc
+      a.blog-item__more-link(href="#") Подробнее
+
+mixin similar-products(title)
+  section.similar-products
+    .container.similar-products__container 
+      h2.section-title.similar-products__title=title
+      .swiper.similar-products__swiper
+        .block-nav.block-nav_slider
+          button.swiper-button.swiper-button-prev.block-nav__button.block-nav__button_prev(type="button")
+            img(src="@img/arrow-down-icon.svg", alt="")
+          button.swiper-button.swiper-button-next.block-nav__button.block-nav__button_next(type="button")
+            img(src="@img/arrow-down-icon.svg", alt="")
+        ul.swiper-wrapper
+          -
+            let productArr = [
+              ['swiper-slide col-lg-3 col-md-4 col-6','@img/product/product-9.jpg', '999 ₽','Прямые брюки'],
+              ['swiper-slide col-lg-3 col-md-4 col-6','@img/product/product-10.jpg','2 499 ₽','Рубашка из вискозы с роговыми пуговицами'],
+              ['swiper-slide col-lg-3 col-md-4 col-6','@img/product/product-11.jpg','600 ₽','Джемпер кроёный'],
+              ['swiper-slide col-lg-3 col-md-4 col-6','@img/product/product-12.jpg','1 200 ₽','Прямая юбка'],
+              ['swiper-slide col-lg-3 col-md-4 col-6','@img/product/product-13.jpg','1 500 ₽','Прямая юбка'],
+              ['swiper-slide col-lg-3 col-md-4 col-6','@img/product/product-14.jpg','2 400 ₽','Джинсы Boyfriend'],
+              ['swiper-slide col-lg-3 col-md-4 col-6','@img/product/product-15.jpg','3 000 ₽','Минималистичная куртка с капюшоном'],
+              ['swiper-slide col-lg-3 col-md-4 col-6','@img/product/product-16.jpg','1 800 ₽','Трикотажные широкие брюки'],
+            ]
+          each val in productArr
+            +product-item(val[0],val[1],val[2],val[3]) 

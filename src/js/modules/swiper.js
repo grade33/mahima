@@ -1,8 +1,9 @@
 import Swiper, {
   Navigation,
   Pagination,
+  Grid,
   Thumbs,
-  Keyboard
+  Keyboard,
 } from 'swiper';
 
 const swiperSmilar = new Swiper('.similar-products__swiper', {
@@ -17,21 +18,22 @@ const swiperSmilar = new Swiper('.similar-products__swiper', {
     prevEl: ".swiper-button-prev",
   },
   breakpoints: {
-    // when window width is >= 320px
+    // when window width is >= 480
     480: {
       slidesPerView: 2,
       spaceBetween: 8
     },
-    // when window width is >= 480px
+    // when window width is >= 768
     768: {
       slidesPerView: 3,
       spaceBetween: 16
     },
-    // when window width is >= 640px
+    // when window width is >= 1000
     1000: {
       slidesPerView: 4,
       spaceBetween: 20
     },
+    // when window width is >= 1280
     1280: {
       slidesPerView: 4,
       spaceBetween: 24
