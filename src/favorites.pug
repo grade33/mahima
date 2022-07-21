@@ -1,0 +1,35 @@
+include ./html/mixins.pug
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Избранное
+    link(rel="stylesheet", href="./css/style.min.css")
+    script(defer src="./js/app.min.js")
+  body.favorites-page
+    include ./html/header.pug
+    +breadcrumbs([ 
+      ["#", "Главная"], 
+      ["#", "Избранное"], 
+      ])
+    main.main 
+      section.favorites
+        .container.favorites__container
+          h1.section-title.favorites__title Избранное
+          ul.favorites__list.grid
+            -
+              let productArr = [
+                ['col-lg-3 col-md-4 col-6','@img/product/product-1.jpg', '999 ₽','Удлинённые шорты'],
+                ['col-lg-3 col-md-4 col-6','@img/product/product-2.jpg', '499 ₽','Трикотажная майка'],
+                ['col-lg-3 col-md-4 col-6','@img/product/product-3.jpg', '1 499 ₽','Хлопковое платье Baby Doll'],
+                ['col-lg-3 col-md-4 col-6','@img/product/product-4.jpg', '2 500 ₽','Платье-рубашка с накладными карманами'],
+                ['col-lg-3 col-md-4 col-6','@img/product/product-5.jpg', '599 ₽','Базовая футболка'],
+                ['col-lg-3 col-md-4 col-6','@img/product/product-6.jpg', '2 000 ₽','Однобортный прямой жакет'],
+                ['col-lg-3 col-md-4 col-6','@img/product/product-7.jpg', '2 000 ₽','Широкие джинсы'],
+                ['col-lg-3 col-md-4 col-6','@img/product/product-16.jpg','1 800 ₽','Трикотажные широкие брюки'],
+              ]
+            each val in productArr
+              +product-item(val[0],val[1],val[2],val[3],'btn-favorites_active')
+    include ./html/footer.pug

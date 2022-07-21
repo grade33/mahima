@@ -10,5 +10,8 @@ functions.addFavorites();
 functions.isBurger();
 functions.isSearch();
 functions.isAccordion();
+functions.isCounter();
+functions.openContacts();
+
 
 

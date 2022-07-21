@@ -1,0 +1,29 @@
+
+include ./html/mixins.pug
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Корзина
+    link(rel="stylesheet", href="./css/style.min.css")
+    script(defer src="./js/app.min.js")
+  body
+    include ./html/header.pug
+    +breadcrumbs([ 
+      ["#", "Главная"], 
+      ["#", "Корзина"], 
+      ])
+    main.main 
+      section.cart
+        .container.cart__container 
+          h1.section-title.cart__title Корзина
+          .empty.grid
+            .empty__inner.col-md-6.col-9
+              span.empty__text В корзине пусто. Добавьте товары из каталога.
+              +link('./catalog.html', 'green', 'empty__link', 'Перейти в каталог')
+      
+      +similar-products('Вам может понравиться')
+    
+    include ./html/footer.pug

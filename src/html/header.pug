@@ -11,48 +11,34 @@ header.header
   .header__main
     .container.header__container
       .header__left
-        button.burger(type="button")
+        button.burger(type="button" aria-label="Меню")
           .burger__list
             span.burger__item
             span.burger__item
             span.burger__item
-        form.search 
-          button.search__btn(type="button")
-            img.search__icon(src="@img/search-icon.svg", alt="Search")
-          input.search__field(type="text")
-          
-      .popup
-        .menu
-          .container.menu__container
-            nav.nav
-              a.nav__link(href="./catalog.html") Каталог
-              a.nav__link(href="./blog.html") Блог
-              a.nav__link(href="#") Контакты
-              a.nav__link(href="#") Дилерам
-            hr.hr
-            .nav-acc
-              a.nav-acc-link(href="#") Помощь
-              a.nav-acc-link(href="#") Регистрация
-              a.nav-acc-link(href="#") Вход
-            hr.hr
-            .header__tel-time
-              a.header__tel(href="tel:+88007774999") 8 800 777-4-999
-              span.header__time 7:00 – 22:00 МСК
-            
+        form.search
+          button.search__btn(type="button" aria-label="Поиск")
+            img.search__icon(src="@img/search-icon.svg", alt="")
+          label.visually-hidden(for="search-field-mobile") Поиск
+          input.search__field#search-field-mobile(type="text")
+
       nav.nav.header__nav
         a.nav__link(href="./catalog.html") Каталог
         a.nav__link(href="./blog.html") Блог
-        a.nav__link(href="#") Контакты
-        a.nav__link(href="#") Дилерам
+        button.contacts-link.nav__link(type="button") Контакты
+        button.nav__link(type="button") Дилерам
       
-      a.header__logo(href="#") 
-        img.header__logo-icon(src="@img/logo.png", alt="Mahima")
+      a.header__logo(href="#" aria-label="Главная страница") 
+        img.header__logo-icon(src="@img/logo.png", alt="")
       .header__user-nav
         form.header__search(action="#") 
-          button.header__search-btn(type="submit")
+          button.header__search-btn(type="submit" aria-label="Поиск")
             img.header__search-icon(src="@img/search-icon.svg", alt="")
-          input.header__search-field(type="search" placeholder="Поиск")
-        a.header__user-nav-link(href="#") 
-          img.header__favourites-icon(src="@img/favourites-icon.svg", alt="")
-        a.header__user-nav-link(href="./cart.html") 
+          label.visually-hidden(for="search-field") Поиск
+          input.header__search-field#search-field(type="search" placeholder="Поиск")
+        a.header__user-nav-link(href="./favorites.html" aria-label="Избранное") 
+          img.header__favorites-icon(src="@img/favorites-icon.svg", alt="")
+        a.header__user-nav-link(href="./cart.html" aria-label="Корзина") 
           img.header__cart-icon(src="@img/cart-icon.svg", alt="")
+
+

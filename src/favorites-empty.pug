@@ -1,0 +1,26 @@
+include ./html/mixins.pug
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Избранное
+    link(rel="stylesheet", href="./css/style.min.css")
+    script(defer src="./js/app.min.js")
+  body.favorites-page
+    include ./html/header.pug
+    +breadcrumbs([ 
+      ["#", "Главная"], 
+      ["#", "Избранное"], 
+      ])
+    main.main 
+      section.favorites
+        .container.favorites__container
+          h1.section-title.favorites__title Избранное
+          .empty.grid
+          .empty__inner.col-md-6.col-9
+            span.empty__text В избранных пусто. Добавьте товары из каталога.
+            +link('./catalog.html', 'green', 'empty__link', 'Перейти в каталог')
+
+    include ./html/footer.pug
