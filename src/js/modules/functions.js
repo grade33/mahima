@@ -23,26 +23,6 @@ export function addFavorites() {
   })
 }
 
-export function isBurger() {
-  const burgerBtn = document.querySelector('.burger')
-  const menu = document.querySelector('.menu')
-  const popup = menu.parentElement
-  burgerBtn.addEventListener('click', () => {
-    burgerBtn.classList.add('burger_active')
-    popup.classList.add('popup_active')
-    menu.classList.add('menu_active')
-    document.body.parentElement.style.overflowY = 'hidden'
-  })
-  popup.addEventListener('click', (e) => {
-    if (!e.target.closest('.menu')) {
-      burgerBtn.classList.remove('burger_active')
-      popup.classList.remove('popup_active')
-      menu.classList.remove('menu_active')
-      document.body.parentElement.style.overflowY = 'unset'
-    }
-  })
-}
-
 export function isSearch() {
   const search = document.querySelector('.search')
   const searchBtn = search.querySelector('.search__btn')
@@ -76,6 +56,78 @@ export function isAccordion() {
       } else {
         accPanel.style.maxHeight = accPanel.scrollHeight + "px";
       }
+    })
+  })
+}
+
+export function isCounter() {
+  document.querySelectorAll('.counter').forEach(counter => {
+    const text = counter.querySelector('.counter__text');
+    const minusBtn = counter.querySelector('.counter__btn_minus');
+    const plusBtn = counter.querySelector('.counter__btn_plus');
+    if (+text.innerHTML <= 1) {
+      minusBtn.setAttribute("disabled", "disabled");
+    }
+    minusBtn.addEventListener('click', () => {
+      if (+text.innerHTML == 2) {
+        text.innerHTML = Number(--text.innerHTML)
+        minusBtn.setAttribute("disabled", "disabled");
+      } else {
+        text.innerHTML = Number(--text.innerHTML)
+      }
+    })
+    plusBtn.addEventListener('click', () => {
+      minusBtn.removeAttribute("disabled", "disabled");
+      text.innerHTML = Number(++text.innerHTML)
+    })
+  })
+}
+
+export function isBurger() {
+  const burgerBtn = document.querySelector('.burger')
+  const popup = document.querySelector('.popup-menu')
+  const menu = popup.querySelector('.menu')
+
+  burgerBtn.addEventListener('click', () => {
+    document.body.parentElement.style.overflowY = 'hidden'
+    burgerBtn.classList.add('burger_active')
+    popup.classList.add('popup-menu_active')
+    menu.classList.add('menu_active')
+  })
+
+  menu.querySelectorAll('.modal-link').forEach(link => {
+    popup.addEventListener('click', (e) => burgerClose(e))
+    link.addEventListener('click', (e) => burgerClose(e))
+  })
+  function burgerClose(e) {
+    if (e.target.closest('.menu') && !e.target.closest('.modal-link')) return;
+    document.body.parentElement.style.overflowY = 'unset'
+    burgerBtn.classList.remove('burger_active')
+    popup.classList.remove('popup-menu_active')
+    menu.classList.remove('menu_active')
+  }
+}
+
+export function openSectionModal() {
+  const menuActivePopup = document.querySelector('.popup-menu_active')
+  const popup = document.querySelector('.popup');
+  const modal = popup.querySelector('.modal');
+
+  document.querySelectorAll('.modal-link').forEach(link => {
+    link.addEventListener('click', () => {
+      const section = link.classList.contains('contact-link') ? modal.querySelector('.contacts') :
+        link.classList.contains('diller-link') ? modal.querySelector('.diller') :
+        link.classList.contains('sign-in-link') ? modal.querySelector('.sign-in') :
+        null
+
+      popup.classList.add('popup_active')
+      section.classList.add('modal__block_active')
+
+      popup.addEventListener('click', (e) => {
+        if (e.target.closest('.modal__block') && !e.target.closest('.btn-close')) return;
+        popup.classList.remove('popup_active')
+        section.classList.remove('modal__block_active')
+      })
     })
   })
 }

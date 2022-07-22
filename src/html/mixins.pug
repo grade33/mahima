@@ -8,20 +8,27 @@ mixin breadcrumbs(obj)
       li.breadcrumbs__item
         span.breadcrumbs__text=lastEl[1]
 
-mixin btn(Class, text)
-  button.btn(class=Class type="button")=text
+mixin btn(type, Color, Class, text)
+  button.btn(class=Class+" btn__"+Color type=type)=text
+
+mixin link(href, Color, Class, text)
+  a.btn(class=Class+" btn__"+Color href=href)=text
+
+mixin btn-close
+  button.btn-close(type="button" aria-label="Закрыть")
+    img(src="@img/close-icon.svg", alt="")
 
 mixin btn-favorites(Class)
   button.btn-favorites(class=Class type="button" aria-label="Добавить в избранное") 
     svg.btn-favorites__icon
       use(xlink:href="@img/sprite.svg#favorites")
 
-mixin rating(Class,star)
-  ul.rating(class=Class)
+mixin rating(Class, star)
+  ul.rating(class=Class aria-label=star+"/5 звезд")
     - let i = 1;
     while i <= 5
       if star > 0
-        li.rating__item 
+        li.rating__item
           svg.rating__icon.rating__icon_fill()
             use(xlink:href="@img/sprite.svg#star")
         - star--;
@@ -31,48 +38,49 @@ mixin rating(Class,star)
             use(xlink:href="@img/sprite.svg#star")
       - i++;
 
-mixin counter(Class)
-  .counter(class=CLass)
-    button.counter__btn.counter__btn_minus(type="button")
+mixin counter(Class, counter)
+  .counter(class=Class)
+    button.counter__btn.counter__btn_minus(type="button" aria-label="Минус")
     span.counter__text=counter
-    button.counter__btn.counter__btn_plus(type="button")
+    button.counter__btn.counter__btn_plus(type="button" aria-label="Плюс")
 
-mixin product-item(Class,img,pay,name)
+mixin product-item(Class, img, pay, name, favorites)
   li.product-item(class=Class)
+    a.product-item__link(href="./product.html") 
     .product-item__img-wrap
-      img.product-item__img(src=img, alt="Фотография одежды")
-      +btn-favorites('product-item__favorites')
+      img.product-item__img(src=img, alt="Фотография продукта")
     strong.product-item__pay=pay
     h3.product-item__name=name
+    +btn-favorites('product-item__favorites '+favorites)
 
-mixin cart-item(Class,img,title,characteristic1,characteristic2,counter,pay)
+mixin cart-item(Class, img, title, characteristic1, characteristic2, counter, pay)
   li.cart-item(class=Class)
     .cart-item__inner
       .cart-item__img-wrap 
-        img.cart-item__img(src=img, alt="Фотография одежды")
+        img.cart-item__img(src=img, alt="Фотография продукта")
       .cart-item__content
         h2.cart-item__title=title
         ul.cart-item__characteristic
           li.cart-item__characteristic-item
-            span.cart-item__characteristic-name
+            span.cart-item__characteristic-name Размер: 
             span.cart-item__characteristic-item-text=characteristic1
           li.cart-item__characteristic-item
-            span.cart-item__characteristic-name
+            span.cart-item__characteristic-name Цвет: 
             span.cart-item__characteristic-item-text=characteristic2
-        +counter('cart-item__counter')
+        +counter('cart-item__counter',counter)
         .cart-item__pay=pay
         .cart-item__btn-wrap.cart-item__btn-wrap-desktop
           +btn-favorites('cart-item__btn cart-item__btn-favorites')
           button.cart-item__btn.cart-item__btn-remove(type="button" aria-label="Удалить")
             img(src="@img/btn-remove-icon.svg", alt="")
     .cart-item__bottom
-      +counter('cart-item__counter-mobile')
+      +counter('cart-item__counter-mobile', counter)
       .cart-item__btn-wrap
         +btn-favorites('cart-item__btn cart-item__btn-favorites')
         button.cart-item__btn.cart-item__btn-remove(type="button" aria-label="Удалить")
           img(src="@img/btn-remove-icon.svg", alt="")
 
-mixin blog-item(Class,img,datetime,time,title,desc)
+mixin blog-item(Class, img, datetime, time, title, desc)
   li.blog-item.grid.blog__item(class=Class)
     .blog-item__img-wrap.col-md-6.col-12
       img.blog-item__img(src=img, alt="")
@@ -80,7 +88,7 @@ mixin blog-item(Class,img,datetime,time,title,desc)
       time.blog-item__date(datetime="")=time
       h2.blog-item__title=title
       p.blog-item__desc=desc
-      a.blog-item__more-link(href="#") Подробнее
+      a.blog-item__more-link(href="./article.html") Подробнее
 
 mixin similar-products(title)
   section.similar-products
@@ -105,4 +113,4 @@ mixin similar-products(title)
               ['swiper-slide col-lg-3 col-md-4 col-6','@img/product/product-16.jpg','1 800 ₽','Трикотажные широкие брюки'],
             ]
           each val in productArr
-            +product-item(val[0],val[1],val[2],val[3]) 
+            +product-item(val[0],val[1],val[2],val[3],'') 

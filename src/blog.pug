@@ -10,12 +10,11 @@ html(lang="ru")
     script(defer src="./js/app.min.js")
   body
     include ./html/header.pug
+    +breadcrumbs([ 
+      ["#", "Главная"], 
+      ["#", "Блог"], 
+      ])
     main.main 
-      +breadcrumbs([ 
-        ["#", "Главная"], 
-        ["#", "Блог"], 
-        ])
-
       section.blog
         .container.blog__container 
           h1.section-title.blog__title Блог

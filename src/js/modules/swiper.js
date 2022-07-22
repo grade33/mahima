@@ -1,7 +1,6 @@
 import Swiper, {
   Navigation,
-  Pagination,
-  Grid,
+  Scrollbar,
   Thumbs,
   Keyboard,
 } from 'swiper';
@@ -39,5 +38,14 @@ const swiperSmilar = new Swiper('.similar-products__swiper', {
       spaceBetween: 24
     }
   }
+})
+
+const swiperProducts = new Swiper('.product__swiper', {
+  modules: [Scrollbar],
+  slidesPerView: 1,
+  spaceBetween: 4,
+  scrollbar: {
+    el: '.swiper-scrollbar',
+  },
 })
 

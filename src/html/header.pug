@@ -6,53 +6,107 @@ header.header
         span.header__time 7:00 – 22:00 МСК
       .nav-acc.header__acc
         a.nav-acc-link(href="#") Помощь
-        a.nav-acc-link(href="#") Регистрация
-        a.nav-acc-link(href="#") Вход
+        button.modal-link.sign-up-link.nav-acc-link(type="button") Регистрация
+        button.modal-link.sign-in-link.nav-acc-link(type="button") Вход
   .header__main
     .container.header__container
       .header__left
-        button.burger(type="button")
+        button.burger(type="button" aria-label="Меню")
           .burger__list
             span.burger__item
             span.burger__item
             span.burger__item
-        form.search 
-          button.search__btn(type="button")
-            img.search__icon(src="@img/search-icon.svg", alt="Search")
-          input.search__field(type="text")
-          
-      .popup
-        .menu
-          .container.menu__container
-            nav.nav
-              a.nav__link(href="./catalog.html") Каталог
-              a.nav__link(href="./blog.html") Блог
-              a.nav__link(href="#") Контакты
-              a.nav__link(href="#") Дилерам
-            hr.hr
-            .nav-acc
-              a.nav-acc-link(href="#") Помощь
-              a.nav-acc-link(href="#") Регистрация
-              a.nav-acc-link(href="#") Вход
-            hr.hr
-            .header__tel-time
-              a.header__tel(href="tel:+88007774999") 8 800 777-4-999
-              span.header__time 7:00 – 22:00 МСК
-            
+        form.search
+          button.search__btn(type="button" aria-label="Поиск")
+            img.search__icon(src="@img/search-icon.svg", alt="")
+          label.visually-hidden(for="search-field-mobile") Поиск
+          input.search__field#search-field-mobile(type="text")
+
       nav.nav.header__nav
         a.nav__link(href="./catalog.html") Каталог
         a.nav__link(href="./blog.html") Блог
-        a.nav__link(href="#") Контакты
-        a.nav__link(href="#") Дилерам
+        button.modal-link.contact-link.nav__link(type="button") Контакты
+        button.modal-link.diller-link.nav__link(type="button") Дилерам
       
-      a.header__logo(href="#") 
-        img.header__logo-icon(src="@img/logo.png", alt="Mahima")
+      a.header__logo(href="#" aria-label="Главная страница") 
+        img.header__logo-icon(src="@img/logo.png", alt="")
       .header__user-nav
         form.header__search(action="#") 
-          button.header__search-btn(type="submit")
+          button.header__search-btn(type="submit" aria-label="Поиск")
             img.header__search-icon(src="@img/search-icon.svg", alt="")
-          input.header__search-field(type="search" placeholder="Поиск")
-        a.header__user-nav-link(href="#") 
-          img.header__favourites-icon(src="@img/favourites-icon.svg", alt="")
-        a.header__user-nav-link(href="./cart.html") 
+          label.visually-hidden(for="search-field") Поиск
+          input.header__search-field#search-field(type="search" placeholder="Поиск")
+        a.header__user-nav-link(href="./favorites.html" aria-label="Избранное") 
+          img.header__favorites-icon(src="@img/favorites-icon.svg", alt="")
+        a.header__user-nav-link(href="./cart.html" aria-label="Корзина") 
           img.header__cart-icon(src="@img/cart-icon.svg", alt="")
+  
+.popup
+  .modal
+    section.contacts.modal__block
+      .container.modal__container
+        button.btn-close(type='button', aria-label='Закрыть')
+          img(src='img/close-icon.svg', alt)
+        h2.section-title.modal__title Контакты
+        .modal__link-wrap
+          a.modal__link(href='mailto:Mahima@info.ru') Mahima@info.ru
+          a.modal__link(href='tel:+79221110500') +7-922-111-05-00
+        .modal__form
+          .modal__field-wrap
+            input.modal__field(type='text', placeholder='Имя')
+            input.modal__field(type='email', placeholder='Email')
+            input.modal__field(type='tel', placeholder='Телефон')
+            textarea.modal__field.modal__textarea(placeholder='Сообщение')
+          button.btn.modal__btn.btn__green(type='submit') Обратный звонок
+    section.diller.modal__block
+      .container.modal__container
+        button.btn-close(type='button', aria-label='Закрыть')
+          img(src='img/close-icon.svg', alt)
+        h2.section-title.modal__title Дилерам
+        p.modal__text.modal__desc Mahima открыта к сотрудничеству с оптовыми клиентами. Свяжитесь с нами и получите доступ к сниженным ценам.
+        .modal__link-wrap
+          a.modal__link(href='mailto:Mahima@info.ru') Mahima@info.ru
+          a.modal__link(href='tel:+79221110500') +7-922-111-05-00
+        .modal__form
+          .modal__field-wrap
+            input.modal__field(type='text', placeholder='Имя')
+            input.modal__field(type='email', placeholder='Email')
+            input.modal__field(type='tel', placeholder='Телефон')
+            textarea.modal__field.modal__textarea(placeholder='Сообщение')
+          button.btn.modal__btn.btn__green(type='submit') Обратный звонок
+    section.sign-in.modal__block
+      .container.modal__container
+        button.btn-close(type='button', aria-label='Закрыть')
+          img(src='img/close-icon.svg', alt)
+        h2.section-title.modal__title Вход
+        .modal__link-wrap
+          a.modal__link(href='mailto:Mahima@info.ru') Mahima@info.ru
+          a.modal__link(href='tel:+79221110500') +7-922-111-05-00
+        .modal__form
+          .modal__field-wrap
+            input.modal__field(type='email', placeholder='Email')
+            input.modal__field(type='password', placeholder='Пароль')
+          button.btn.modal__btn.btn__green(type='submit') Войти
+          .modal__one-line.modal__text
+            div
+              span Нету аккаунта? 
+              a.modal__text_link(href='#') Зарегестрируйтесь.
+            a.modal__text_link(href='#') Забыли пароль?
+    
+.popup-menu
+  .menu
+    .container.menu__container
+      nav.nav
+        a.nav__link(href='./catalog.html') Каталог
+        a.nav__link(href='./blog.html') Блог
+        button.modal-link.contact-link.nav__link(type='button') Контакты
+        button.modal-link.diller-link.nav__link(type='button') Дилерам
+      hr.hr
+      .nav-acc
+        a.nav-acc-link(href='#') Помощь
+        button.modal-link.sign-up-link.nav-acc-link(type='button') Регистрация
+        button.modal-link.sign-in-link.nav-acc-link(type='button') Вход
+        hr.hr
+        .header__tel-time
+          a.header__tel(href='tel:+88007774999') 8 800 777-4-999
+          span.header__time 7:00 – 22:00 МСК

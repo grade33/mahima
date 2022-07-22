@@ -10,16 +10,26 @@ html(lang="ru")
     script(defer src="./js/app.min.js")
   body.product-page
     include ./html/header.pug
+    +breadcrumbs([ 
+      ["#", "Главная"], 
+      ["./catalog.html", "Каталог"], 
+      ["#", "Штаны"], 
+      ["#", "Удлиненные шорты"], 
+      ])
     main.main 
-      +breadcrumbs([ 
-        ["#", "Главная"], 
-        ["./catalog.html", "Каталог"], 
-        ["#", "Штаны"], 
-        ["#", "Удлиненные шорты"], 
-        ])
-      
       section.product
         .container
+          .swiper.product__swiper
+            ul.swiper-wrapper
+              li.swiper-slide.product__images-item
+                img.product__images-img(src="@img/product-image-1.jpg", alt="Image")
+              li.swiper-slide.product__images-item
+                img.product__images-img(src="@img/product-image-2.jpg", alt="Image")
+              li.swiper-slide.product__images-item
+                img.product__images-img(src="@img/product-image-3.jpg", alt="Image")
+              li.swiper-slide.product__images-item
+                img.product__images-img(src="@img/product-image-4.jpg", alt="Image")
+            .swiper-scrollbar
           .product__container.grid 
             ul.product__images.grid.col-xl-9.col-lg-8.col-md-6.col-12
               li.product__images-item.col-lg-6.col-md-12.col-sm-6
@@ -54,7 +64,7 @@ html(lang="ru")
                 button.product__btn-info.underline(type="button") Таблица размеров
                 button.product__btn-info.underline(type="button") Предзаказ
               .product__btn-add
-                +btn('product__btn-add-cart','Добавить в корзину')
+                +btn('button','green','product__btn-add-cart','Добавить в корзину')
                 +btn-favorites('btn-favorites_rec product__btn-add-favorites')
               hr.hr
               .product__characteristic-block
@@ -103,7 +113,7 @@ html(lang="ru")
             span.review__title_quantity 6
             |)
           +rating('review__main-rating',5)
-          +btn('review__btn-write','Написать отзыв')
+          +link('#','green','review__btn-write','Написать отзыв')
           .grid
             ul.review__list.col-xl-8.col-lg-9
               li.review__item 
@@ -124,7 +134,7 @@ html(lang="ru")
                   +rating('review__item-rating',5)
                 time.review__date(datetime="2022-06-5") 5 июня 2022
                 p.review__desc Рубашка классная. Материал тонкий, немного жатый. Ткань приятная к телу. Летом будет не жарко, продувает. Сзади немного удлинённая. На рост 170 ОГ 88 от 72 оверсайз
-            button.review__download-more(type="button")
+            button.review__download-more(type="button" aria-label="Загрузить еще")
               img.review__download-more-icon(src="@img/arrow-down-icon.svg", alt="")
     
     include ./html/footer.pug

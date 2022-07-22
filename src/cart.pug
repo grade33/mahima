@@ -10,12 +10,11 @@ html(lang="ru")
     script(defer src="./js/app.min.js")
   body
     include ./html/header.pug
+    +breadcrumbs([ 
+      ["#", "Главная"], 
+      ["#", "Корзина"], 
+      ])
     main.main 
-      +breadcrumbs([ 
-        ["#", "Главная"], 
-        ["#", "Корзина"], 
-        ])
-
       section.cart
         .container.cart__container 
           h1.section-title.cart__title Корзина
@@ -35,8 +34,22 @@ html(lang="ru")
                 each val in cartArr
                   +cart-item(val[0],val[1],val[2],val[3],val[4],val[5],val[6])
 
-            .cart__total.col-lg-3.col-md-4.col-sm-6.col-12
-      
+            .total.cart__total.col-lg-3.col-md-4.col-sm-6.col-12
+              .total__top 
+                h2.total__title Итого
+                strong.total__total-pay 4 194 ₽
+              .hr.total__hr
+              ul.total__body 
+                li.total__row 
+                  span.total__name Товары:
+                  span.total__pay 4 000 ₽
+                li.total__row 
+                  span.total__name Доставка:
+                  span.total__pay  194 ₽
+              .total__btn-wrap
+                +btn('button','trs','total__btn','Использовать промокод')
+                +btn('button','green','total__btn','Оформить заказ')
+
       +similar-products('Вам может понравиться')
     
     include ./html/footer.pug
