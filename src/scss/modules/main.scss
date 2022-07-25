@@ -1,7 +1,12 @@
 // Section
 
 .header {
+  position: relative;
   border-bottom: 1px solid $gray-strokes;
+  background: $white;
+  @media (max-width: $sm) {
+    z-index: 50;
+  }
 
   &__user-nav-link,
   &__logo {
@@ -283,7 +288,7 @@
         position: absolute;
         left: 1%;
         bottom: 3px;
-        z-index: 50;
+        z-index: 9;
         height: 5px;
         width: 98%;
         background: $gray-bg;
@@ -823,12 +828,6 @@
 
   &__list {
     row-gap: var(--gutter);
-  }
-}
-
-.sign-in {
-  .modal__one-line {
-    margin-top: 10px;
   }
 }
 

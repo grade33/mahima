@@ -45,53 +45,99 @@ header.header
   .modal
     section.contacts.modal__block
       .container.modal__container
-        button.btn-close(type='button', aria-label='Закрыть')
-          img(src='img/close-icon.svg', alt)
-        h2.section-title.modal__title Контакты
-        .modal__link-wrap
-          a.modal__link(href='mailto:Mahima@info.ru') Mahima@info.ru
-          a.modal__link(href='tel:+79221110500') +7-922-111-05-00
+        .modal__top
+          h2.section-title.modal__title Контакты
+          button.btn-close(type='button', aria-label='Закрыть')
+            img(src='img/close-icon.svg', alt)
+        .modal__top-links
+          a(href='mailto:Mahima@info.ru') Mahima@info.ru
+          a(href='tel:+79221110500') +7-922-111-05-00
         .modal__form
           .modal__field-wrap
-            input.modal__field(type='text', placeholder='Имя')
-            input.modal__field(type='email', placeholder='Email')
-            input.modal__field(type='tel', placeholder='Телефон')
+            label.visually-hidden(for="contacts-name") Введите Имя
+            input#contacts-name.modal__field(type='text', placeholder='Имя')
+            label.visually-hidden(for="contacts-email") Введите Email
+            input#contacts-email.modal__field(type='email', placeholder='Email')
+            label.visually-hidden(for="contacts-tel") Введите Телефон
+            input#contacts-tel.modal__field(type='tel', placeholder='Телефон')
             textarea.modal__field.modal__textarea(placeholder='Сообщение')
-          button.btn.modal__btn.btn__green(type='submit') Обратный звонок
+          +btn('submit', 'green','modal__btn', 'Обратный звонок')
     section.diller.modal__block
       .container.modal__container
-        button.btn-close(type='button', aria-label='Закрыть')
-          img(src='img/close-icon.svg', alt)
-        h2.section-title.modal__title Дилерам
+        .modal__top
+          h2.section-title.modal__title Дилерам
+          button.btn-close(type='button', aria-label='Закрыть')
+            img(src='img/close-icon.svg', alt)
         p.modal__text.modal__desc Mahima открыта к сотрудничеству с оптовыми клиентами. Свяжитесь с нами и получите доступ к сниженным ценам.
-        .modal__link-wrap
-          a.modal__link(href='mailto:Mahima@info.ru') Mahima@info.ru
-          a.modal__link(href='tel:+79221110500') +7-922-111-05-00
+        .modal__top-links
+          a(href='mailto:Mahima@info.ru') Mahima@info.ru
+          a(href='tel:+79221110500') +7-922-111-05-00
         .modal__form
           .modal__field-wrap
-            input.modal__field(type='text', placeholder='Имя')
-            input.modal__field(type='email', placeholder='Email')
-            input.modal__field(type='tel', placeholder='Телефон')
+            label.visually-hidden(for="diller-name") Введите Имя
+            input#diller-name.modal__field(type='text', placeholder='Имя')
+            label.visually-hidden(for="diller-email") Введите Email
+            input#diller-email.modal__field(type='email', placeholder='Email')
+            label.visually-hidden(for="diller-tel") Введите Телефон
+            input#diller-tel.modal__field(type='tel', placeholder='Телефон')
             textarea.modal__field.modal__textarea(placeholder='Сообщение')
-          button.btn.modal__btn.btn__green(type='submit') Обратный звонок
+          +btn('submit', 'green','modal__btn', 'Обратный звонок')
     section.sign-in.modal__block
       .container.modal__container
-        button.btn-close(type='button', aria-label='Закрыть')
-          img(src='img/close-icon.svg', alt)
-        h2.section-title.modal__title Вход
-        .modal__link-wrap
-          a.modal__link(href='mailto:Mahima@info.ru') Mahima@info.ru
-          a.modal__link(href='tel:+79221110500') +7-922-111-05-00
+        .modal__top
+          h2.section-title.modal__title Вход
+          button.btn-close(type='button', aria-label='Закрыть')
+            img(src='img/close-icon.svg', alt)
         .modal__form
           .modal__field-wrap
-            input.modal__field(type='email', placeholder='Email')
-            input.modal__field(type='password', placeholder='Пароль')
-          button.btn.modal__btn.btn__green(type='submit') Войти
-          .modal__one-line.modal__text
-            div
-              span Нету аккаунта? 
-              a.modal__text_link(href='#') Зарегестрируйтесь.
-            a.modal__text_link(href='#') Забыли пароль?
+            label.visually-hidden(for="sign-in-email") Введите Email
+            input#sign-in-email.modal__field(type='email', placeholder='Email')
+            label.visually-hidden(for="sign-in-password") Введите Пароль
+            .password
+              input#sign-in-password.modal__field(type='password', placeholder='Пароль')
+              button.password__btn(type="button")
+          .modal__forgot.modal__text
+            button.modal__link.modal-link.forgot-pass-link(type="button") Забыли пароль?
+          +btn('submit', 'green','modal__btn', 'Войти')
+          div.modal__text.modal__bottom
+            span Нету аккаунта? 
+            button.modal__link.modal-link.sign-up-link(type="button") Зарегестрируйтесь.
+    section.sign-up.modal__block
+      .container.modal__container
+        .modal__top
+          h2.section-title.modal__title Регистрация
+          button.btn-close(type='button', aria-label='Закрыть')
+            img(src='img/close-icon.svg', alt)
+        .modal__form
+          .modal__field-wrap
+            label.visually-hidden(for="sign-up-email") Введите Email
+            input#sign-up-email.modal__field(type='email', placeholder='Email')
+            label.visually-hidden(for="sign-up-password") Придумайте пароль
+            .password
+              input#sign-up-password.modal__field(type='password', placeholder='Придумайте пароль')
+              button.password__btn(type="button")
+          .modal__forgot.modal__text
+          button.btn.btn__green.modal__btn.modal-link.verification-code-link(type='submit' disabled) Зарегистрироваться
+          div.modal__text.modal__bottom
+            span Уже есть аккаунт? 
+            button.modal__link.modal-link.sign-in-link(type="button") Войдите.
+    section.verification-code.modal__block
+      .container.modal__container
+        .modal__top
+          h2.section-title.modal__title Регистрация
+          button.btn-close(type='button', aria-label='Закрыть')
+            img(src='img/close-icon.svg', alt)
+        .modal__desc
+          p.modal__text На ваш Email был отправлен проверочный код.
+          button.modal__link.modal-link.sign-up-link(type="button") Вернуться назад
+        .modal__form
+          .modal__field-wrap
+            label.visually-hidden(for="forgot-code") Введите Код
+            input#forgot-code.modal__field(type='number', placeholder='Код')
+          .modal__forgot.modal__text
+          button.btn.btn__green.modal__btn(type='submit' disabled) Зарегистрироваться
+          div.modal__text.modal__bottom
+            button.modal__link(type="button") Отправить новый код
     
 .popup-menu
   .menu

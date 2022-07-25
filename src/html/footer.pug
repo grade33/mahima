@@ -6,7 +6,8 @@ section.email-form
         form.email-form__form.col-xl-6.col-12(action="#") 
           h2.email-form__title Получайте уникальные летние скидки! 
           .email-form__field-wrap
-            input.email-form__field(type="email" placeholder="E-mail")
+            label.visually-hidden(for="email-form-field") Введите Email
+            input#email-form-field.email-form__field(type="email" placeholder="E-mail")
             +btn('submit','green','email-form__btn','Получить')
 
 footer.footer
@@ -22,15 +23,15 @@ footer.footer
             a.footer__text(href="./catalog.html") Каталог
             a.footer__text(href="./favorites.html") Избранное
             a.footer__text(href="./cart.html") Корзина 
+            a.footer__text(href="./blog.html") Блог
             a.footer__text(href="#") Помощь
             button.modal-link.modal-link.contact-link.footer__text(type="button") Контакты
             button.modal-link.diller-link.footer__text(type="button") Дилерам
-            a.footer__text(href="./blog.html") Блог
         .footer__acc.col-sm-6.col-12
           strong.footer__title Аккаунт
           .footer__list
             button.modal-link.sign-in-link.footer__text(type="button") Вход
-            button.modal-link.sign-in-up.footer__text(type="button") Регистрация
+            button.modal-link.sign-up-link.footer__text(type="button") Регистрация
       .footer__payment.col-xl-3.col-md-4.col-sm-10.col-9
         strong.footer__title Способы оплаты
         nav.footer__list

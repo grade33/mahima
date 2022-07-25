@@ -83,6 +83,22 @@ export function isCounter() {
   })
 }
 
+export function passwordControl() {
+  document.querySelectorAll('.password').forEach(passBlock => {
+    let input = passBlock.querySelector('input');
+    let passBtn = passBlock.querySelector('button');
+    passBtn.addEventListener('click', () => {
+      if (input.getAttribute('type') == 'password') {
+        input.setAttribute('type', 'name')
+        passBtn.classList.add('password__btn_show')
+      } else {
+        input.setAttribute('type', 'password')
+        passBtn.classList.remove('password__btn_show')
+      }
+    })
+  })
+}
+
 export function isBurger() {
   const burgerBtn = document.querySelector('.burger')
   const popup = document.querySelector('.popup-menu')
@@ -99,6 +115,7 @@ export function isBurger() {
     popup.addEventListener('click', (e) => burgerClose(e))
     link.addEventListener('click', (e) => burgerClose(e))
   })
+
   function burgerClose(e) {
     if (e.target.closest('.menu') && !e.target.closest('.modal-link')) return;
     document.body.parentElement.style.overflowY = 'unset'
@@ -109,24 +126,32 @@ export function isBurger() {
 }
 
 export function openSectionModal() {
-  const menuActivePopup = document.querySelector('.popup-menu_active')
   const popup = document.querySelector('.popup');
   const modal = popup.querySelector('.modal');
 
   document.querySelectorAll('.modal-link').forEach(link => {
     link.addEventListener('click', () => {
+      document.querySelectorAll('.modal__block').forEach(section => {
+        section.classList.remove('modal__block_active');
+      })
+
       const section = link.classList.contains('contact-link') ? modal.querySelector('.contacts') :
         link.classList.contains('diller-link') ? modal.querySelector('.diller') :
         link.classList.contains('sign-in-link') ? modal.querySelector('.sign-in') :
+        link.classList.contains('sign-up-link') ? modal.querySelector('.sign-up') :
+        link.classList.contains('verification-code-link') ? modal.querySelector('.verification-code') :
         null
 
-      popup.classList.add('popup_active')
-      section.classList.add('modal__block_active')
+      popup.classList.add('popup_active');
+      section.classList.add('modal__block_active');
+      document.body.parentElement.style.overflowY = 'hidden';
+
 
       popup.addEventListener('click', (e) => {
         if (e.target.closest('.modal__block') && !e.target.closest('.btn-close')) return;
-        popup.classList.remove('popup_active')
-        section.classList.remove('modal__block_active')
+        popup.classList.remove('popup_active');
+        section.classList.remove('modal__block_active');
+        document.body.parentElement.style.overflowY = 'unset';
       })
     })
   })

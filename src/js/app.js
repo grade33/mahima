@@ -11,5 +11,7 @@ functions.isBurger();
 functions.isSearch();
 functions.isAccordion();
 functions.isCounter();
+functions.passwordControl();
 functions.openSectionModal();
+
 
