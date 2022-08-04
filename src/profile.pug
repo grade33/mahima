@@ -1,0 +1,40 @@
+include ./html/mixins.pug
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Профиль
+    link(rel="stylesheet", href="./css/style.min.css")
+    script(defer src="./js/app.min.js")
+  body.product-page
+    +header('true')
+    include ./html/popup.pug
+    
+    +breadcrumbs([ 
+      ["#", "Главная"], 
+      ["#", "Профиль"], 
+      ])
+    
+    main.main 
+      section.profile(data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out")
+        .container.profile__container
+          h1.section-title.profile__title Профиль
+          .profile__content.grid
+            form.profile__form.col-12.col-md-8.col-lg-9(action="#")
+              .profile__field-wrap
+                +field('profile__field','Имя','text','Имя','Антон')
+                +field('profile__field','Номер телефона','tel','Номер телефона','+995 (597) 702-43-21 ')
+                +field('profile__field','Город доставки','text','Город доставки','Москва')
+                +field('profile__field','Адрес доставки','text','Адрес доставки','ул. Лужников 4')
+                +field('profile__field','Почтовый индекс','number','Почтовый индекс','220113')
+              .profile__btn-wrap
+                +btn('button', 'green', 'profile__btn', 'Обновить данные')
+                span.profile__successful Данные успешно обновленны!
+
+
+
+      
+
+    include ./html/footer.pug

@@ -10,12 +10,14 @@ html(lang="ru")
     script(defer src="./js/app.min.js")
   body.favorites-page
     include ./html/header.pug
+    
     +breadcrumbs([ 
       ["#", "Главная"], 
       ["#", "Избранное"], 
       ])
+    
     main.main 
-      section.favorites
+      section.favorites(data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out")
         .container.favorites__container
           h1.section-title.favorites__title Избранное
           ul.favorites__list.grid
@@ -32,4 +34,6 @@ html(lang="ru")
               ]
             each val in productArr
               +product-item(val[0],val[1],val[2],val[3],'btn-favorites_active')
+    
+    +email-form
     include ./html/footer.pug

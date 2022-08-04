@@ -10,12 +10,14 @@ html(lang="ru")
     script(defer src="./js/app.min.js")
   body
     include ./html/header.pug
+    
     +breadcrumbs([ 
       ["#", "Главная"], 
       ["#", "Каталог"], 
       ])
+    
     main.main 
-      section.catalog
+      section.catalog(data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out")
         .container.catalog__container 
           h1.section-title.catalog__title Каталог
           .filter.catalog__filter
@@ -84,4 +86,5 @@ html(lang="ru")
             a.block-nav__button.block-nav__button_next(href="#")
               img(src="@img/arrow-down-icon.svg", alt="")
     
+    +email-form
     include ./html/footer.pug

@@ -10,12 +10,14 @@ html(lang="ru")
     script(defer src="./js/app.min.js")
   body
     include ./html/header.pug
+    
     +breadcrumbs([ 
       ["#", "Главная"], 
       ["#", "Блог"], 
       ])
+    
     main.main 
-      section.blog
+      section.blog(data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out")
         .container.blog__container 
           h1.section-title.blog__title Блог
           ul.blog__list
@@ -43,4 +45,5 @@ html(lang="ru")
             a.block-nav__button.block-nav__button_next(href="#")
               img(src="@img/arrow-down-icon.svg", alt="")
     
+    +email-form
     include ./html/footer.pug

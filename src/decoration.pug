@@ -1,0 +1,62 @@
+include ./html/mixins.pug
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Оформление
+    link(rel="stylesheet", href="./css/style.min.css")
+    script(defer src="./js/app.min.js")
+  body.product-page
+    include ./html/header.pug
+    
+    +breadcrumbs([ 
+      ["#", "Главная"], 
+      ["./cart.html", "Корзина"], 
+      ["#", "Оформление"], 
+      ])
+    
+    main.main 
+      section.decoration(data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out")
+        .container.decoration__container 
+          h1.section-title.decoration__title Оформление
+          .grid.decoration__content
+            form.decoration__form.col-lg-9.col-md-8.col-12(action="#")
+              .decoration__field-wrap
+                +field('decoration__field','Имя','text','Имя','')
+                +field('decoration__field','Номер телефона','tel','Номер телефона','')
+                +field('decoration__field','Город доставки','text','Город доставки','')
+                +field('decoration__field','Адрес доставки','text','Адрес доставки','')
+                +field('decoration__field','Почтовый индекс','email','Почтовый индекс','')
+              .decoration__choice
+                h2.decoration__choice-title Способ доставки
+                +field-radio('decoration__field-radio', 'Курьером', 'delivery', '1')
+                +field-radio('decoration__field-radio', 'Почтой', 'delivery', '')
+              .decoration__choice
+                h2.decoration__choice-title Способ оплаты
+                +field-radio('decoration__field-radio', 'Картой онлайн', 'pay', '')
+                +field-radio('decoration__field-radio', 'Картой при получении товара', 'pay', '')
+                +field-radio('decoration__field-radio', 'Наличными при получении товара', 'pay', '1')
+
+            .total.decoration__total.col-lg-3.col-md-4.col-sm-6.col-12
+              .total__top 
+                h2.total__title Итого
+                strong.total__total-pay 4 194 ₽
+              .hr.total__hr
+              ul.total__body 
+                li.total__row 
+                  span.total__name Товары:
+                  span.total__pay 4 000 ₽
+                li.total__row 
+                  span.total__name Доставка:
+                  span.total__pay  194 ₽
+              .hr.total__hr
+              .total__date 
+                span.total__date-name Дата:
+                span.total__date-time  1-3 августа
+              .total__btn-wrap
+                +btn('button','green','total__btn','Закончить оформление')
+
+
+    include ./html/footer.pug

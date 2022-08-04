@@ -1,6 +1,6 @@
 mixin breadcrumbs(obj)
-  ul.breadcrumbs
-    .container.breadcrumbs__container
+  .breadcrumbs
+    ul.container.breadcrumbs__container
       - let lastEl = obj.pop()
       each val in obj
         li.breadcrumbs__item
@@ -14,9 +14,25 @@ mixin btn(type, Color, Class, text)
 mixin link(href, Color, Class, text)
   a.btn(class=Class+" btn__"+Color href=href)=text
 
-mixin btn-close
-  button.btn-close(type="button" aria-label="Закрыть")
-    img(src="@img/close-icon.svg", alt="")
+mixin field(Class,text,Type,placeholder,value)
+  label.field(class=Class)
+    span.field__text=text
+    input.field__input(type=Type placeholder=placeholder value=value)
+
+mixin field-radio(Class, text, name, checked)
+  label.field-radio(class=Class)
+    if checked
+      input.visually-hidden(type="radio" name=name checked)
+    else 
+      input.visually-hidden(type="radio" name=name)
+    span.field-checkbox__custom
+    span.field-checkbox__text=text
+
+
+mixin btn-close(Class)
+  button.btn-close(class=Class type="button" aria-label="Закрыть")
+    svg 
+      use(xlink:href="@img/sprite.svg#close")
 
 mixin btn-favorites(Class)
   button.btn-favorites(class=Class type="button" aria-label="Добавить в избранное") 
@@ -29,12 +45,22 @@ mixin rating(Class, star)
     while i <= 5
       if star > 0
         li.rating__item
-          svg.rating__icon.rating__icon_fill()
+          svg.rating__icon.rating__icon_fill
             use(xlink:href="@img/sprite.svg#star")
         - star--;
       else 
         li.rating__item
-          svg.rating__icon.rating__icon()
+          svg.rating__icon
+            use(xlink:href="@img/sprite.svg#star")
+      - i++;
+
+mixin rating-write(Class)
+  ul.rating.rating-write(class=Class aria-label="Указать количество звезд")
+    - let i = 0;
+    while i < 5
+      li.rating__item
+        button.rating__btn(type="button")
+          svg.rating__icon
             use(xlink:href="@img/sprite.svg#star")
       - i++;
 
@@ -44,54 +70,108 @@ mixin counter(Class, counter)
     span.counter__text=counter
     button.counter__btn.counter__btn_plus(type="button" aria-label="Плюс")
 
+//- Items
+
 mixin product-item(Class, img, pay, name, favorites)
   li.product-item(class=Class)
     a.product-item__link(href="./product.html") 
     .product-item__img-wrap
-      img.product-item__img(src=img, alt="Фотография продукта")
+      img.product-item__img(src=img, loading="lazy" alt="Фотография продукта")
     strong.product-item__pay=pay
     h3.product-item__name=name
     +btn-favorites('product-item__favorites '+favorites)
 
 mixin cart-item(Class, img, title, characteristic1, characteristic2, counter, pay)
-  li.cart-item(class=Class)
-    .cart-item__inner
-      .cart-item__img-wrap 
-        img.cart-item__img(src=img, alt="Фотография продукта")
-      .cart-item__content
-        h2.cart-item__title=title
-        ul.cart-item__characteristic
-          li.cart-item__characteristic-item
-            span.cart-item__characteristic-name Размер: 
-            span.cart-item__characteristic-item-text=characteristic1
-          li.cart-item__characteristic-item
-            span.cart-item__characteristic-name Цвет: 
-            span.cart-item__characteristic-item-text=characteristic2
-        +counter('cart-item__counter',counter)
-        .cart-item__pay=pay
-        .cart-item__btn-wrap.cart-item__btn-wrap-desktop
-          +btn-favorites('cart-item__btn cart-item__btn-favorites')
-          button.cart-item__btn.cart-item__btn-remove(type="button" aria-label="Удалить")
+  li.cart-pre-order-item(class=Class)
+    .cart-pre-order-item__inner
+      .cart-pre-order-item__img-wrap 
+        img.cart-pre-order-item__img(src=img, loading="lazy" alt="Фотография продукта")
+      .cart-pre-order-item__content
+        h2.cart-pre-order-item__title=title
+        ul.cart-pre-order-item__characteristic
+          li.cart-pre-order-item__characteristic-item
+            span.cart-pre-order-item__characteristic-name Размер: 
+            span.cart-pre-order-item__characteristic-item-text=characteristic1
+          li.cart-pre-order-item__characteristic-item
+            span.cart-pre-order-item__characteristic-name Цвет: 
+            span.cart-pre-order-item__characteristic-item-text=characteristic2
+        +counter('cart-pre-order-item__counter',counter)
+        .cart-pre-order-item__pay=pay
+        .cart-pre-order-item__btn-wrap.cart-pre-order-item__btn-wrap-desktop
+          +btn-favorites('cart-pre-order-item__btn cart-pre-order-item__btn-favorites')
+          button.cart-pre-order-item__btn.cart-pre-order-item__btn-remove(type="button" aria-label="Удалить")
             img(src="@img/btn-remove-icon.svg", alt="")
-    .cart-item__bottom
-      +counter('cart-item__counter-mobile', counter)
-      .cart-item__btn-wrap
-        +btn-favorites('cart-item__btn cart-item__btn-favorites')
-        button.cart-item__btn.cart-item__btn-remove(type="button" aria-label="Удалить")
+    .cart-pre-order-item__bottom
+      +counter('cart-pre-order-item__counter-mobile', counter)
+      .cart-pre-order-item__btn-wrap
+        +btn-favorites('cart-pre-order-item__btn cart-pre-order-item__btn-favorites')
+        button.cart-pre-order-item__btn.cart-pre-order-item__btn-remove(type="button" aria-label="Удалить")
           img(src="@img/btn-remove-icon.svg", alt="")
 
 mixin blog-item(Class, img, datetime, time, title, desc)
   li.blog-item.grid.blog__item(class=Class)
     .blog-item__img-wrap.col-md-6.col-12
-      img.blog-item__img(src=img, alt="")
+      img.blog-item__img(src=img, loading="lazy" alt="")
     .blog-item__content.col-xl-5.col-md-6.col-12
       time.blog-item__date(datetime="")=time
       h2.blog-item__title=title
       p.blog-item__desc=desc
       a.blog-item__more-link(href="./article.html") Подробнее
 
+
+//- Sections
+
+mixin header(profile)
+  header.header
+    .header__top
+      .container.header__container
+        .header__tel-time
+          a.header__tel(href="tel:+88007774999") 8 800 777-4-999
+          span.header__time 7:00 – 22:00 МСК
+        .nav-account.header__account
+          a.nav-account-link(href="./help.html") Помощь
+          if profile
+            a.nav-account-link(href="#") Выход
+            a.nav-account-link(href="./profile.html") Профиль
+          else 
+            button.modal-link.sign-up-link.nav-account-link(type="button") Регистрация
+            button.modal-link.sign-in-link.nav-account-link(type="button") Вход
+    .header__main
+      .container.header__container
+        .header__left
+          button.burger(type="button" aria-label="Меню")
+            .burger__list
+              span.burger__item
+              span.burger__item
+              span.burger__item
+          form.search
+            button.search__btn(type="button" aria-label="Поиск")
+              img.search__icon(src="@img/search-icon.svg", alt="")
+            label.visually-hidden(for="search-field-mobile") Поиск
+            input.search__field#search-field-mobile(type="text")
+
+        nav.nav.header__nav
+          a.nav__link(href="./catalog.html") Каталог
+          a.nav__link(href="./blog.html") Блог
+          button.modal-link.contact-link.nav__link(type="button") Контакты
+          button.modal-link.diller-link.nav__link(type="button") Дилерам
+        
+        a.header__logo(href="#" aria-label="Главная страница") 
+          img.header__logo-icon(src="@img/logo.png", alt="")
+        .header__user-nav
+          form.header__search(action="#") 
+            button.header__search-btn(type="submit" aria-label="Поиск")
+              img.header__search-icon(src="@img/search-icon.svg", alt="")
+            label.visually-hidden(for="search-field") Поиск
+            input.header__search-field#search-field(type="search" placeholder="Поиск")
+          a.header__user-nav-link(href="./favorites.html" aria-label="Избранное") 
+            img.header__favorites-icon(src="@img/favorites-icon.svg", alt="")
+          a.header__user-nav-link(href="./cart.html" aria-label="Корзина") 
+            img.header__cart-icon(src="@img/cart-icon.svg", alt="")
+  
+
 mixin similar-products(title)
-  section.similar-products
+  section.similar-products(data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out")
     .container.similar-products__container 
       h2.section-title.similar-products__title=title
       .swiper.similar-products__swiper
@@ -114,3 +194,16 @@ mixin similar-products(title)
             ]
           each val in productArr
             +product-item(val[0],val[1],val[2],val[3],'') 
+
+mixin email-form
+  section.email-form(data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out")
+    .container.email-form__container.grid
+        .email-form__content.grid.col-xl-12.col-lg-9.col-12
+          .email-form__img-wrap.col-xl-6.col-12
+            img.email-form__img(src="@img/email-form.jpg", loading="lazy" alt="")
+          form.email-form__form.col-xl-6.col-12(action="#") 
+            h2.email-form__title Получайте уникальные летние скидки! 
+            .email-form__field-wrap
+              label.visually-hidden(for="email-form-field") Введите Email
+              input#email-form-field.email-form__field(type="email" placeholder="E-mail")
+              +btn('submit','green','email-form__btn','Получить')

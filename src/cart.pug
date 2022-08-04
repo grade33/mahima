@@ -10,21 +10,23 @@ html(lang="ru")
     script(defer src="./js/app.min.js")
   body
     include ./html/header.pug
+    
     +breadcrumbs([ 
       ["#", "Главная"], 
       ["#", "Корзина"], 
       ])
+    
     main.main 
-      section.cart
-        .container.cart__container 
-          h1.section-title.cart__title Корзина
-          .cart__content.grid
-            .cart__list-wrap.col-lg-9.col-md-8.col-12
-              .cart__list-quantity 
+      section.cart-pre-order(data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out")
+        .container.cart-pre-order__container 
+          h1.section-title.cart-pre-order__title Корзина
+          .cart-pre-order__content.grid
+            .cart-pre-order__list-wrap.col-lg-9.col-md-8.col-12
+              .cart-pre-order__list-quantity 
                 |В корзине 
-                span.cart__list-quantity-text 3 
+                span.cart-pre-order__list-quantity-text 3 
                 |товара
-              ul.cart__list
+              ul.cart-pre-order__list
                 -
                   let cartArr = [
                     ['','@img/product/product-7.jpg','Широкие джинсы','42(S)','Чёрный','4','2 000 ₽'],
@@ -34,7 +36,7 @@ html(lang="ru")
                 each val in cartArr
                   +cart-item(val[0],val[1],val[2],val[3],val[4],val[5],val[6])
 
-            .total.cart__total.col-lg-3.col-md-4.col-sm-6.col-12
+            .total.cart-pre-order__total.col-lg-3.col-md-4.col-sm-6.col-12
               .total__top 
                 h2.total__title Итого
                 strong.total__total-pay 4 194 ₽
@@ -46,10 +48,21 @@ html(lang="ru")
                 li.total__row 
                   span.total__name Доставка:
                   span.total__pay  194 ₽
+                li.total__row.total__promocode-text
+                  span.total__name Промокод Лето 2022:
+                  span.total__pay  -400 ₽
+                  
               .total__btn-wrap
-                +btn('button','trs','total__btn','Использовать промокод')
-                +btn('button','green','total__btn','Оформить заказ')
+                .total__promocode
+                  +btn('button','trs','total__btn total__promocode-btn','Использовать промокод')
+                  label.visually-hidden(for="promocode") 
+                  .total__promocode-input-wrap.visually-hidden
+                    input.total__promocode-input#promocode(type="text" placeholder="Введите Промокод")
+                    button.total__promocode-input-btn(type="button")
+                      img(src="@img/promocode-apply.svg", alt="")
+                +link('./decoration.html','green','total__btn','Оформить заказ')
 
       +similar-products('Вам может понравиться')
     
+    +email-form
     include ./html/footer.pug

@@ -58,7 +58,7 @@
   grid-column: span 12;
 }
 
-@media(min-width: calc($sm + 1px)) {
+@media(min-width: calc($sm + 0.02px)) {
   .col-sm {}
 
   .col-sm-1 {
@@ -110,7 +110,7 @@
   }
 }
 
-@media(min-width: calc($md + 1px)) {
+@media(min-width: calc($md + 0.02px)) {
   .col-md {}
 
   .col-md-1 {
@@ -162,7 +162,7 @@
   }
 }
 
-@media(min-width: calc($lg + 1px)) {
+@media(min-width: calc($lg + 0.02px)) {
   .col-lg {}
 
   .col-lg-1 {
@@ -214,7 +214,7 @@
   }
 }
 
-@media(min-width: calc($xl + 1px)) {
+@media(min-width: calc($xl + 0.02px)) {
   .col-xl {}
 
   .col-xl-1 {

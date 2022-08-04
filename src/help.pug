@@ -1,0 +1,67 @@
+include ./html/mixins.pug
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Помощь
+    link(rel="stylesheet", href="./css/style.min.css")
+    script(defer src="./js/app.min.js")
+  body
+    include ./html/header.pug
+    
+    +breadcrumbs([ 
+      ["#", "Главная"], 
+      ["#", "Помощь"], 
+      ])
+    
+    main.main 
+      section.help(data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out")
+        .container.help__container 
+          h1.section-title.help__title Помощь
+          ul.help__list
+            li.acc.help__item
+              .acc__head
+                button.acc__trigger(type="button")
+                .acc__title-wrap
+                  h3.acc__title Какими способами я могу вернуть товар? 
+                img.acc__icon-plus(src="@img/btn-plus-icon.svg", alt="")
+              .acc__panel
+                p Обратитесь по номеру горячей линии 8 800 777-4-999 или напишите нам на электронный адрес support@mahima.com.
+            li.acc.help__item
+              .acc__head
+                button.acc__trigger(type="button")
+                .acc__title-wrap
+                  h3.acc__title Что с моим заказом, как я могу его отследить?
+                img.acc__icon-plus(src="@img/btn-plus-icon.svg", alt="")
+              .acc__panel
+                p Обратитесь по номеру горячей линии 8 800 777-4-999 или напишите нам на электронный адрес support@mahima.com.
+            li.acc.help__item
+              .acc__head
+                button.acc__trigger(type="button")
+                .acc__title-wrap
+                  h3.acc__title Как отменить заказ?
+                img.acc__icon-plus(src="@img/btn-plus-icon.svg", alt="")
+              .acc__panel
+                p Обратитесь по номеру горячей линии 8 800 777-4-999 или напишите нам на электронный адрес support@mahima.com.
+            li.acc.help__item
+              .acc__head
+                button.acc__trigger(type="button")
+                .acc__title-wrap
+                  h3.acc__title Что такое промокод?
+                img.acc__icon-plus(src="@img/btn-plus-icon.svg", alt="")
+              .acc__panel
+                p Обратитесь по номеру горячей линии 8 800 777-4-999 или напишите нам на электронный адрес support@mahima.com.
+            li.acc.help__item
+              .acc__head
+                button.acc__trigger(type="button")
+                .acc__title-wrap
+                  h3.acc__title Как применить промокод?
+                img.acc__icon-plus(src="@img/btn-plus-icon.svg", alt="")
+              .acc__panel
+                p Обратитесь по номеру горячей линии 8 800 777-4-999 или напишите нам на электронный адрес support@mahima.com.
+
+         
+
+    include ./html/footer.pug

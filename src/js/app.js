@@ -6,12 +6,17 @@ AOS.init();
 // Functions
 import * as functions from "./modules/functions.js";
 functions.isWebp();
+functions.error();
 functions.addFavorites();
 functions.isBurger();
 functions.isSearch();
 functions.isAccordion();
 functions.isCounter();
 functions.passwordControl();
-functions.openSectionModal();
-
+functions.openModal();
+functions.surveillanceModalDisabledBtn();
+functions.leaveReview();
+functions.ProfileSuccessfulChange();
+functions.promocode();
+functions.imageZoom();
 

@@ -10,16 +10,18 @@ html(lang="ru")
     script(defer src="./js/app.min.js")
   body
     include ./html/header.pug
+    
     +breadcrumbs([ 
       ["#", "Главная"], 
       ["./blog.html", "Блог"], 
       ["#", "Скидка 25% на пляжную коллекцию"], 
       ])
+    
     main.main 
-      section.article
+      section.article(data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out")
         .container.article__container
           .article__img-wrap
-            img.article__img(src="@img/article.jpg", alt="")
+            img.article__img(src="@img/article.jpg", loading="lazy" alt="")
           .grid.article__content
             .col-xl-6.col-lg-9.col-12.article__content-inner
               h1.section-title.article__title Скидка 25% на пляжную коллекцию 
@@ -28,7 +30,7 @@ html(lang="ru")
                 
                 ul.line
                   li 
-                    a(href="#") Для неё
+                    a(href="") Для неё
                   li 
                     a(href="#") Для него 
                   li 
@@ -55,7 +57,7 @@ html(lang="ru")
                 
                 p Организатор: ООО «ОСТИН» Юридический адрес: 117420, г. Москва, ул. Профсоюзная, д. 61А. ОГРН 1057747320003. Количество товаров ограничено. Организатор оставляет за собой право изменять сроки и условия акции либо прекратить её досрочно.
       
-      section.smilar-blog
+      section.smilar-blog(data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out")
         .container.smilar-blog__container 
           ul.blog__list
             -
@@ -67,4 +69,5 @@ html(lang="ru")
             each val in blogArr
               +blog-item(val[0],val[1],val[2],val[3],val[4],val[5])
     
+    +email-form
     include ./html/footer.pug

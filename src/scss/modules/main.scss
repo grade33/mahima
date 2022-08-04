@@ -4,6 +4,7 @@
   position: relative;
   border-bottom: 1px solid $gray-strokes;
   background: $white;
+
   @media (max-width: $sm) {
     z-index: 50;
   }
@@ -69,7 +70,7 @@
   }
 
   &__left {
-    @media (min-width: $lg) {
+    @media (min-width: calc($lg + 0.02px)) {
       display: none;
     }
 
@@ -265,6 +266,7 @@
 }
 
 
+
 .product {
   &__container {
     row-gap: 16px;
@@ -279,7 +281,7 @@
     max-height: 455px;
     margin-bottom: 32px;
 
-    @media (min-width: calc($sm + 1px)) {
+    @media (min-width: calc($sm + 0.02px)) {
       display: none;
     }
 
@@ -292,6 +294,7 @@
         height: 5px;
         width: 98%;
         background: $gray-bg;
+
         &-drag {
           position: relative;
           top: 0;
@@ -320,11 +323,29 @@
     }
   }
 
+  &__info {
+    position: sticky;
+    top: 0;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+
+    &>* {
+      @media (max-width: $md) {
+        order: 3;
+      }
+    }
+  }
+
   &__title {
     margin-bottom: 14px;
 
     @media (max-width: $lg) {
       margin-bottom: 10px;
+    }
+
+    @media (max-width: $md) {
+      order: 1;
     }
   }
 
@@ -334,6 +355,7 @@
 
     @media (max-width: $md) {
       margin-bottom: 36px;
+      order: 1;
     }
 
     @media (max-width: $sm) {
@@ -347,29 +369,25 @@
     }
   }
 
-  &__btn-info {
-    &-wrap {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 20px;
-      @include mini-txt;
+  &__pre-order {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    @include mini-txt;
 
-      @media (max-width: $md) {
-        display: none;
-      }
+    @media (max-width: $md) {
+      order: 2;
     }
 
-    &_tablet {
-      margin-bottom: 14px;
+    @media (max-width: $sm) {
+      margin-bottom: 12px;
+    }
 
-      @media (min-width: calc($md + 1px)) {
-        display: none;
-      }
-
-      @media (max-width: $sm) {
-        margin-bottom: 12px;
-      }
+    &-text {
+      color: $red;
     }
   }
 
@@ -435,7 +453,7 @@
     &-cart {
       flex-grow: 1;
 
-      @media(min-width: calc($md + 1px)) {
+      @media(min-width: calc($md + 0.02px)) {
         padding-left: 0;
         padding-right: 0;
       }
@@ -459,10 +477,12 @@
   }
 
   &__btn-more {
-    margin-top: 10px;
+    &-wrap {
+      margin-top: 10px;
 
-    @media (max-width: $md) {
-      margin-top: 8px;
+      @media (max-width: $md) {
+        margin-top: 8px;
+      }
     }
   }
 }
@@ -498,8 +518,16 @@
 }
 
 .review {
-  @media (max-width: $md) {
-    display: none;
+  order: 1;
+
+  @media (max-width: $lg) {
+    order: unset;
+  }
+
+  &__content {
+    @media (max-width: $md) {
+      display: none;
+    }
   }
 
   &__title {
@@ -511,8 +539,13 @@
 
   }
 
-  &__btn-write {
+  &__write-btn {
     margin-bottom: 40px;
+
+    @media (max-width: $md) {
+      margin-bottom: 36px;
+      margin-top: 20px;
+    }
 
     @media (max-width: $lg) {
       padding-left: 44px;
@@ -525,16 +558,39 @@
     flex-direction: column;
     gap: 40px;
     margin-bottom: 40px;
+
+    @media (max-width: $md) {
+      gap: 36px;
+      margin-bottom: 0;
+    }
+
+    .rating {
+      &__icon {
+
+        @media (max-width: $md) {
+          width: 12px;
+          height: 12px;
+        }
+      }
+    }
   }
 
   &__name-rating {
     display: flex;
-    gap: 10px;
+    gap: 8px 10px;
     margin-bottom: 10px;
+
+    @media (max-width: $md) {
+      flex-direction: column;
+    }
   }
 
   &__name {
     @include h3;
+
+    @media (max-width: $md) {
+      order: 1;
+    }
   }
 
   &__date {
@@ -545,18 +601,59 @@
 
   &__download-more {
     width: 100%;
+    padding: 10px 0;
+    margin: -10px 0;
 
     &-icon {
-      margin-bottom: 10px;
+      &-wrap {
+        display: flex;
+        justify-content: center;
+        border-bottom: 1px solid $gray-strokes;
+        padding-bottom: 10px;
+      }
+
+
+      @media (max-width: $lg) {
+        width: 14px;
+      }
+    }
+  }
+
+  &__acc {
+    @media (min-width: calc($md + 0.02px)) {
+      display: none;
     }
 
-    border-bottom: 1px solid $gray-strokes;
-  }
-}
+    @include txt;
+    padding-left: calc((100vw - var(--cont-this)) / 2);
+    padding-right: calc((100vw - var(--cont-this)) / 2);
+    margin-left: calc((-100vw + var(--cont-this)) / 2);
+    margin-right: calc((-100vw + var(--cont-this)) / 2);
 
-.review-pre-order {
-  @media (min-width: calc($md + 1px)) {
-    display: none;
+    @media (max-width: $sm) {
+      padding-left: 20px;
+      padding-right: 20px;
+      margin-left: -20px;
+      margin-right: -20px;
+    }
+
+    .acc {
+      &__head {
+        .rating {
+          &__icon {
+            @media (max-width: $md) {
+              width: 9px;
+              height: 9px;
+            }
+          }
+        }
+      }
+
+      &__panel {
+        max-width: 100%;
+        @include mini-txt;
+      }
+    }
   }
 }
 
@@ -678,7 +775,7 @@
   }
 }
 
-.cart {
+.cart-pre-order {
   &__title {
     margin-bottom: 24px;
 
@@ -716,7 +813,7 @@
       margin-bottom: 13px;
       margin-left: auto;
 
-      @media (min-width: calc($md + 1px)) {
+      @media (min-width: calc($md + 0.02px)) {
         display: none;
       }
     }
@@ -749,7 +846,7 @@
     }
 
     &-inner {
-      @media (min-width: calc($xl + 1px)) {
+      @media (min-width: calc($xl + 0.02px)) {
         grid-column: 4 / calc(4 + 6);
       }
     }
@@ -828,6 +925,209 @@
 
   &__list {
     row-gap: var(--gutter);
+  }
+}
+
+.help {
+  &__title {
+    margin-bottom: 75px;
+
+    @media (max-width: $xl) {
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: $md) {
+      margin-bottom: 36px;
+    }
+
+    @media (max-width: $sm) {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__list {
+    @media (min-width: calc($xl + 0.02px)) {
+      max-width: 741px;
+      margin: 0 auto;
+    }
+  }
+}
+
+.decoration {
+  &__title {
+    margin-bottom: 40px;
+
+    @media (max-width: $sm) {
+      margin-bottom: 36px;
+    }
+  }
+
+  &__content {
+    row-gap: 36px;
+
+    @media (max-width: $sm) {
+      row-gap: 32px;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @media (max-width: $md) {
+      gap: 36px;
+    }
+  }
+
+  &__field {
+    &-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+
+      @media (max-width: $lg) {
+        flex-direction: column;
+        align-items: unset;
+      }
+
+      @media (max-width: $md) {
+        gap: 16px;
+      }
+    }
+
+    @media (min-width: calc($lg + 0.02px)) {
+      width: calc(50% - 7px);
+    }
+
+    &-radio {
+      width: fit-content;
+
+      &:not(:last-child) {
+        margin-bottom: 10px;
+
+        @media (max-width: $sm) {
+          margin-bottom: 8px;
+        }
+      }
+    }
+  }
+
+  &__choice {
+    display: flex;
+    flex-direction: column;
+
+    &-title {
+      @include h3;
+      margin-bottom: 14px;
+
+      @media (max-width: $sm) {
+        margin-bottom: 16px;
+      }
+    }
+  }
+
+  &__total {
+    .total {
+      &__btn-wrap {
+        margin-top: 36px;
+
+        @media (max-width: $sm) {
+          margin-top: 16px;
+        }
+      }
+    }
+  }
+}
+
+.profile {
+  &__title {
+    margin-bottom: 40px;
+
+    @media (max-width: $md) {
+      margin-bottom: 36px;
+    }
+
+    @media (max-width: $md) {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__field {
+    &-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+
+      @media (max-width: $lg) {
+        flex-direction: column;
+        align-items: unset;
+      }
+
+      @media (max-width: $md) {
+        gap: 16px;
+        margin-bottom: 16px;
+      }
+    }
+
+    @media (min-width: calc($lg + 0.02px)) {
+      width: calc(50% - 7px);
+    }
+  }
+
+  &__btn {
+    &-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      @media (max-width: $md) {
+        gap: 8px;
+      }
+    }
+  }
+
+  &__successful {
+    @include mini-txt;
+    color: #00B412;
+
+    @media (max-width: $sm) {
+      text-align: center;
+    }
+
+    &:not(&_active) {
+      display: none;
+    }
+  }
+}
+
+.empty {
+  &__title {
+    margin-bottom: 24px;
+
+    @media (max-width: $md) {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__text-block {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__text {
+    margin-bottom: 14px;
+
+    @media (max-width: $md) {
+      margin-bottom: 8px;
+    }
+
+    @media (max-width: $sm) {
+      margin-bottom: 10px;
+    }
   }
 }
 

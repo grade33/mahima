@@ -10,41 +10,42 @@ html(lang="ru")
     script(defer src="./js/app.min.js")
   body.product-page
     include ./html/header.pug
+    
     +breadcrumbs([ 
       ["#", "Главная"], 
       ["./catalog.html", "Каталог"], 
       ["#", "Штаны"], 
       ["#", "Удлиненные шорты"], 
       ])
+    
     main.main 
-      section.product
+      section.product(data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out")
         .container
           .swiper.product__swiper
             ul.swiper-wrapper
               li.swiper-slide.product__images-item
-                img.product__images-img(src="@img/product-image-1.jpg", alt="Image")
+                img.product__images-img(src="@img/product-image-1.jpg", loading="lazy" alt="Image")
               li.swiper-slide.product__images-item
-                img.product__images-img(src="@img/product-image-2.jpg", alt="Image")
+                img.product__images-img(src="@img/product-image-2.jpg", loading="lazy" alt="Image")
               li.swiper-slide.product__images-item
-                img.product__images-img(src="@img/product-image-3.jpg", alt="Image")
+                img.product__images-img(src="@img/product-image-3.jpg", loading="lazy" alt="Image")
               li.swiper-slide.product__images-item
-                img.product__images-img(src="@img/product-image-4.jpg", alt="Image")
+                img.product__images-img(src="@img/product-image-4.jpg", loading="lazy" alt="Image")
             .swiper-scrollbar
           .product__container.grid 
             ul.product__images.grid.col-xl-9.col-lg-8.col-md-6.col-12
               li.product__images-item.col-lg-6.col-md-12.col-sm-6
-                img.product__images-img(src="@img/product-image-1.jpg", alt="Image")
+                img.product__images-img(src="@img/product-image-1.jpg", loading="lazy" alt="Image")
               li.product__images-item.col-lg-6.col-md-12.col-sm-6
-                img.product__images-img(src="@img/product-image-2.jpg", alt="Image")
+                img.product__images-img(src="@img/product-image-2.jpg", loading="lazy" alt="Image")
               li.product__images-item.col-lg-6.col-md-12.col-sm-6
-                img.product__images-img(src="@img/product-image-3.jpg", alt="Image")
+                img.product__images-img(src="@img/product-image-3.jpg", loading="lazy" alt="Image")
               li.product__images-item.col-lg-6.col-md-12.col-sm-6
-                img.product__images-img(src="@img/product-image-4.jpg", alt="Image")
+                img.product__images-img(src="@img/product-image-4.jpg", loading="lazy" alt="Image")
             .product__info.col-xl-3.col-lg-4.col-md-6.col-12
               h1.section-title.product__title Удлиненные шорты
               strong.product__pay 2 000 ₽
               hr.hr
-              button.product__btn-info.product__btn-info_tablet.underline(type="button") Таблица размеров
               .product__select-wrap.grid
                 .product__select-1.col-md-12.col-sm-6.col-12
                   select.select(name="color") 
@@ -60,11 +61,11 @@ html(lang="ru")
                     option(value="yellow") L
                     option(value="yellow") Xl
                     option(value="yellow") XXl
-              .product__btn-info-wrap
-                button.product__btn-info.underline(type="button") Таблица размеров
-                button.product__btn-info.underline(type="button") Предзаказ
+              .product__pre-order
+                button.product__pre-order-btn.underline(type="button") Таблица размеров
+                span.product__pre-order-text.product__pre-order-text_active Нет в наличии!
               .product__btn-add
-                +btn('button','green','product__btn-add-cart','Добавить в корзину')
+                +link('./pre-order.html','green','product__btn-add-cart','Оформить предзаказ')
                 +btn-favorites('btn-favorites_rec product__btn-add-favorites')
               hr.hr
               .product__characteristic-block
@@ -74,67 +75,91 @@ html(lang="ru")
                 .product__characteristic
                   span.product__characteristic-name Артикул: 
                   span.product__characteristic-desc MP002XW03CCF
-              button.product__btn-more.underline(type="button") Читать полностью
+              .product__btn-more-wrap
+                button.product__btn-more.underline(type="button") Читать полностью
       
-      section.review-pre-order
-        .container.review-pre-order__container
-          .acc.review-pre-order__review
+      section.review(data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out")
+        .container.review__container
+          .review__content
+            h2.section-title.review__title 
+              |Отзывы (
+              span.review__title_quantity 6
+              |)
+            +rating('review__main-rating',5)
+            +link('#','green','modal-link review__write-link review__write-btn','Написать отзыв')
+            .grid
+              ul.review__list.col-xl-8.col-lg-9.col-12
+                li.review__item 
+                  .review__name-rating 
+                    h3.review__name Елена
+                    +rating('review__item-rating',4)
+                  time.review__date(datetime="2022-06-16") 16 июня 2022
+                  p.review__desc Плюсы: великолепно сидит, выглядит, не сильно мнётся, не прилипает шерсть и мусор. Минусы: не дышит, покалывает, не очень приятна к телу. Мне хотелось льняную рубашку на лето. Но она скорее рубашка на все сезоны. В офис, на повседневную жизнь. Она как легкий плащ. В пасмурную летнюю погоду в ней будет классно. Не могу до конца определиться оставить или заказать что-то ещё. Выглядит оч классно, но не отвечает моему изначальному запросу дышащей рубашки на лето. Возможно, просто нужно купить вторую.
+                li.review__item 
+                  .review__name-rating 
+                    h3.review__name Ольга
+                    +rating('review__item-rating',5)
+                  time.review__date(datetime="2022-06-15") 15 июня 2022
+                  p.review__desc На 175 ог 97 - прекрасно 48 размер, наконец то не короткие рукава и приличная длина! Вообще костюм шикарный как и большинство вещей из лимитки. Только с размером брюк беда
+                li.review__item 
+                  .review__name-rating 
+                    h3.review__name Евгения
+                    +rating('review__item-rating',5)
+                  time.review__date(datetime="2022-06-5") 5 июня 2022
+                  p.review__desc Рубашка классная. Материал тонкий, немного жатый. Ткань приятная к телу. Летом будет не жарко, продувает. Сзади немного удлинённая. На рост 170 ОГ 88 от 72 оверсайз
+            button.review__download-more(type="button" aria-label="Загрузить еще")
+              .review__download-more-icon-wrap
+                img.review__download-more-icon(src="@img/arrow-down-icon.svg", alt="")
+
+          .acc.review__acc
             .acc__head
               button.acc__trigger(type="button")
               .acc__title-wrap
                 h2.acc__title Отывы
                 +rating('',5)
-              img.acc__icon(src="@img/arrow-down-icon.svg", alt="")
+              img.acc__icon-arrow(src="@img/arrow-down-icon.svg", alt="")
             .acc__panel
-              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, blanditiis.
-              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, blanditiis.
-              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, blanditiis.
-              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, blanditiis.
-              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, blanditiis.
-          .acc.review-pre-order__pre-order
-            .acc__head
-              button.acc__trigger(type="button")
-              .acc__title-wrap
-                h2.acc__title Предзаказ
-              img.acc__icon(src="@img/arrow-down-icon.svg", alt="")
-            .acc__panel
-              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, blanditiis.
-              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, blanditiis.
-              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, blanditiis.
-              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, blanditiis.
-              p Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit, blanditiis.
-
+              +link('#','green','modal-link review__write-link review__write-btn','Написать отзыв')
+              ul.review__list
+                li.review__item 
+                  .review__name-rating 
+                    h3.review__name Елена
+                    +rating('review__item-rating',4)
+                  time.review__date(datetime="2022-06-16") 16 июня 2022
+                  p.review__desc Плюсы: великолепно сидит, выглядит, не сильно мнётся, не прилипает шерсть и мусор. Минусы: не дышит, покалывает, не очень приятна к телу. Мне хотелось льняную рубашку на лето. Но она скорее рубашка на все сезоны. В офис, на повседневную жизнь. Она как легкий плащ. В пасмурную летнюю погоду в ней будет классно. Не могу до конца определиться оставить или заказать что-то ещё. Выглядит оч классно, но не отвечает моему изначальному запросу дышащей рубашки на лето. Возможно, просто нужно купить вторую.
+                li.review__item 
+                  .review__name-rating 
+                    h3.review__name Ольга
+                    +rating('review__item-rating',5)
+                  time.review__date(datetime="2022-06-15") 15 июня 2022
+                  p.review__desc На 175 ог 97 - прекрасно 48 размер, наконец то не короткие рукава и приличная длина! Вообще костюм шикарный как и большинство вещей из лимитки. Только с размером брюк беда
+                li.review__item 
+                  .review__name-rating 
+                    h3.review__name Евгения
+                    +rating('review__item-rating',5)
+                  time.review__date(datetime="2022-06-5") 5 июня 2022
+                  p.review__desc Рубашка классная. Материал тонкий, немного жатый. Ткань приятная к телу. Летом будет не жарко, продувает. Сзади немного удлинённая. На рост 170 ОГ 88 от 72 оверсайз
+      
+      .zoom
+        .zoom__bg
+        +btn-close('zoom__close')
+        ul.zoom__list
+          li.zoom__item
+            button.zoom__btn(type="button" aria-label="Изображение 1")
+              img.zoom__img(src="@img/product-image-1.jpg", loading="lazy" alt="Image")
+          li.zoom__item
+            button.zoom__btn(type="button" aria-label="Изображение 2")
+              img.zoom__img(src="@img/product-image-2.jpg", loading="lazy" alt="Image")
+          li.zoom__item
+            button.zoom__btn(type="button" aria-label="Изображение 3")
+              img.zoom__img(src="@img/product-image-3.jpg", loading="lazy" alt="Image")
+          li.zoom__item
+            button.zoom__btn(type="button" aria-label="Изображение 4")
+              img.zoom__img(src="@img/product-image-4.jpg", loading="lazy" alt="Image")
+        .zoom__main-img-wrap 
+          img.zoom__main-img(src="", loading="lazy" alt="Image")
+      
       +similar-products('Похожие товары')
 
-      section.review
-        .container.review__container
-          h2.section-title.review__title 
-            |Отзывы (
-            span.review__title_quantity 6
-            |)
-          +rating('review__main-rating',5)
-          +link('#','green','review__btn-write','Написать отзыв')
-          .grid
-            ul.review__list.col-xl-8.col-lg-9
-              li.review__item 
-                .review__name-rating 
-                  h3.review__name Елена
-                  +rating('review__item-rating',4)
-                time.review__date(datetime="2022-06-16") 16 июня 2022
-                p.review__desc Плюсы: великолепно сидит, выглядит, не сильно мнётся, не прилипает шерсть и мусор. Минусы: не дышит, покалывает, не очень приятна к телу. Мне хотелось льняную рубашку на лето. Но она скорее рубашка на все сезоны. В офис, на повседневную жизнь. Она как легкий плащ. В пасмурную летнюю погоду в ней будет классно. Не могу до конца определиться оставить или заказать что-то ещё. Выглядит оч классно, но не отвечает моему изначальному запросу дышащей рубашки на лето. Возможно, просто нужно купить вторую.
-              li.review__item 
-                .review__name-rating 
-                  h3.review__name Ольга
-                  +rating('review__item-rating',5)
-                time.review__date(datetime="2022-06-15") 15 июня 2022
-                p.review__desc На 175 ог 97 - прекрасно 48 размер, наконец то не короткие рукава и приличная длина! Вообще костюм шикарный как и большинство вещей из лимитки. Только с размером брюк беда
-              li.review__item 
-                .review__name-rating 
-                  h3.review__name Евгения
-                  +rating('review__item-rating',5)
-                time.review__date(datetime="2022-06-5") 5 июня 2022
-                p.review__desc Рубашка классная. Материал тонкий, немного жатый. Ткань приятная к телу. Летом будет не жарко, продувает. Сзади немного удлинённая. На рост 170 ОГ 88 от 72 оверсайз
-            button.review__download-more(type="button" aria-label="Загрузить еще")
-              img.review__download-more-icon(src="@img/arrow-down-icon.svg", alt="")
-    
+    +email-form
     include ./html/footer.pug

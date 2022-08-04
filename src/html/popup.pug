@@ -1,0 +1,150 @@
+.popup
+  .modal
+    .contacts.modal__block
+      .container.modal__container
+        .modal__top.modal__margin-24
+          h2.section-title.modal__title Контакты
+          button.btn-close(type='button', aria-label='Закрыть')
+            img(src='img/close-icon.svg', alt)
+        .modal__top.modal__margin-24-links
+          a(href='mailto:Mahima@info.ru') Mahima@info.ru
+          a(href='tel:+79221110500') +7-922-111-05-00
+        form.modal__form(action="#")
+          .modal__field-wrap.modal__margin-24
+            label.visually-hidden(for="contacts-name") Введите Имя
+            input#contacts-name.modal__field(type='text', placeholder='Имя')
+            label.visually-hidden(for="contacts-email") Введите Email
+            input#contacts-email.modal__field(type='email', placeholder='Email')
+            label.visually-hidden(for="contacts-tel") Введите Телефон
+            input#contacts-tel.modal__field(type='tel', placeholder='Телефон')
+            label.visually-hidden(for="contacts-message") Введите Сообщение
+            textarea#contacts-message.modal__field.modal__textarea(placeholder='Сообщение')
+          +btn('submit', 'green','modal__btn', 'Обратный звонок')
+    .diller.modal__block
+      .container.modal__container
+        .modal__top.modal__margin-24
+          h2.section-title.modal__title Дилерам
+          +btn-close('modal__btn-close')
+        p.modal__text.modal__desc.modal__margin-24 Mahima открыта к сотрудничеству с оптовыми клиентами. Свяжитесь с нами и получите доступ к сниженным ценам.
+        .modal__top.modal__margin-24-links
+          a(href='mailto:Mahima@info.ru') Mahima@info.ru
+          a(href='tel:+79221110500') +7-922-111-05-00
+        form.modal__form(action="#")
+          .modal__field-wrap.modal__margin-24
+            label.visually-hidden(for="diller-name") Введите Имя
+            input#diller-name.modal__field(type='text', placeholder='Имя')
+            label.visually-hidden(for="diller-email") Введите Email
+            input#diller-email.modal__field(type='email', placeholder='Email')
+            label.visually-hidden(for="diller-tel") Введите Телефон
+            input#diller-tel.modal__field(type='tel', placeholder='Телефон')
+            label.visually-hidden(for="diller-message") Введите Сообщение
+            textarea#diller-message.modal__field.modal__textarea(placeholder='Сообщение')
+          +btn('submit', 'green','modal__btn', 'Обратный звонок')
+    .sign-in.modal__block
+      .container.modal__container
+        .modal__top.modal__margin-24
+          h2.section-title.modal__title Вход
+          +btn-close('modal__btn-close')
+        form.modal__form(action="#")
+          .modal__field-wrap.modal__margin-24
+            label.visually-hidden(for="sign-in-email") Введите Email
+            input#sign-in-email.modal__field(type='email', placeholder='Email')
+            label.visually-hidden(for="sign-in-password") Введите Пароль
+            .password
+              input#sign-in-password.modal__field(type='password', placeholder='Пароль')
+              button.password__btn(type="button")
+            button.modal__link.modal-link.forgot-link.modal__forgot(type="button") Забыли пароль?
+          +btn('submit', 'green','modal__btn', 'Войти')
+          div.modal__text.modal__bottom
+            span Нету аккаунта? 
+            button.modal__link.modal-link.sign-up-link(type="button") Зарегестрируйтесь.
+    .sign-up.modal__block
+      .container.modal__container
+        .modal__top.modal__margin-24
+          h2.section-title.modal__title Регистрация
+          +btn-close('modal__btn-close')
+        form.modal__form(action="#")
+          .modal__field-wrap.modal__margin-24
+            label.visually-hidden(for="sign-up-email") Введите Email
+            input#sign-up-email.modal__field(type='email', placeholder='Email')
+            label.visually-hidden(for="sign-up-password") Придумайте пароль
+            .password
+              input#sign-up-password.modal__field(type='password', placeholder='Придумайте пароль')
+              button.password__btn(type="button")
+          button.btn.btn__green.modal__btn.modal-link.verification-code-link(type='submit' disabled) Зарегистрироваться
+          div.modal__text.modal__bottom
+            span Уже есть аккаунт? 
+            button.modal__link.modal-link.sign-in-link(type="button") Войдите.
+    .verification-code.modal__block
+      .container.modal__container
+        .modal__top.modal__margin-24
+          h2.section-title.modal__title Регистрация
+          +btn-close('modal__btn-close')
+        .modal__desc.modal__margin-24
+          p.modal__text На ваш Email был отправлен проверочный код.
+          button.modal__link.modal-link.sign-up-link(type="button") Вернуться назад
+        form.modal__form(action="#")
+          .modal__field-wrap.modal__margin-24
+            label.visually-hidden(for="verification-code") Введите Код
+            input#verification-code.modal__field(type='number', placeholder='Код')
+          button.btn.btn__green.modal__btn(type='submit' disabled) Зарегистрироваться
+          div.modal__text.modal__bottom
+            button.modal__link(type="button") Отправить новый код
+    .review-modal.modal__block
+      .container.modal__container
+        .modal__top.modal__margin-24
+          h2.section-title.modal__title Написать отзыв
+          +btn-close('modal__btn-close')
+        +rating-write('modal__rating modal__margin-24')
+        form.modal__form(action="#")
+          .modal__field-wrap.modal__margin-24
+            label.visually-hidden(for="review-name") Введите Имя
+            input#review-name.modal__field(type='text', placeholder='Имя')
+            label.visually-hidden(for="review-message") Напишите о ваших впечатлениях
+            textarea#review-message.modal__field.modal__textarea(placeholder='Ваши впечатления')
+          button.btn.btn__green.modal__btn(type='submit' disabled) Отправить отзыв
+    .forgot.modal__block
+      .container.modal__container
+        .modal__top.modal__margin-24
+          h2.section-title.modal__title Смена пароля
+          +btn-close('modal__btn-close')
+        p.modal__text Введите свой Email, на который придёт код для смены пароля
+        button.modal__link.modal-link.sign-in-link.modal__margin-24(type="button") Вернуться назад
+        form.modal__form(action="#")
+          .modal__field-wrap.modal__margin-24
+            label.visually-hidden(for="forgot-email") Введите Email
+            input#forgot-email.modal__field(type='email', placeholder='Email')
+          button.btn.btn__green.modal__btn.modal-link.new-pass-link(type='submit' disabled) Получить код
+    .new-pass.modal__block
+      .container.modal__container
+        .modal__top.modal__margin-24
+          h2.section-title.modal__title Придумайте пароль
+          +btn-close('modal__btn-close')
+        form.modal__form(action="#")
+          .modal__field-wrap.modal__margin-24
+            .password
+              input#new-pass-password.modal__field(type='password', placeholder='Новый пароль')
+              button.password__btn(type="button")
+          button.btn.btn__green.modal__btn(type='submit' disabled) Подтвердить
+
+.popup-menu
+  .menu
+    .container.menu__container
+      nav.nav
+        a.nav__link(href='./catalog.html') Каталог
+        a.nav__link(href='./blog.html') Блог
+        button.modal-link.contact-link.nav__link(type='button') Контакты
+        button.modal-link.diller-link.nav__link(type='button') Дилерам
+      hr.hr
+      .nav-account
+        a.nav-account-link(href='./help.html') Помощь
+        button.modal-link.sign-up-link.nav-account-link(type='button') Регистрация
+        button.modal-link.sign-in-link.nav-account-link(type='button') Вход
+        hr.hr
+        .header__tel-time
+          a.header__tel(href='tel:+88007774999') 8 800 777-4-999
+          span.header__time 7:00 – 22:00 МСК
+
+.error
+  strong.error__text Ошибка
+  +btn-close('error__btn-close')

@@ -1,0 +1,68 @@
+include ./html/mixins.pug
+doctype html
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Предзаказ
+    link(rel="stylesheet", href="./css/style.min.css")
+    script(defer src="./js/app.min.js")
+  body
+    include ./html/header.pug
+    
+    +breadcrumbs([ 
+      ["#", "Главная"], 
+      ["./catalog.html", "Каталог"], 
+      ["./product.html", "Широкие джинсы"], 
+      ["#", "Предзаказ"], 
+      ])
+    
+    main.main 
+      section.cart-pre-order(data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out")
+        .container.cart-pre-order__container 
+          h1.section-title.cart-pre-order__title Предзаказ
+          .cart-pre-order__content.grid
+            .cart-pre-order__list-wrap.col-lg-9.col-md-8.col-12
+              .cart-pre-order-item
+                  .cart-pre-order-item__inner
+                    .cart-pre-order-item__img-wrap 
+                      img.cart-pre-order-item__img(src='@img/product/product-7.jpg', loading="lazy" alt="Фотография продукта")
+                    .cart-pre-order-item__content
+                      h2.cart-pre-order-item__title Широкие джинсы
+                      ul.cart-pre-order-item__characteristic
+                        li.cart-pre-order-item__characteristic-item
+                          span.cart-pre-order-item__characteristic-name Размер: 
+                          span.cart-pre-order-item__characteristic-item-text 42(S)
+                        li.cart-pre-order-item__characteristic-item
+                          span.cart-pre-order-item__characteristic-name Цвет: 
+                          span.cart-pre-order-item__characteristic-item-text Чёрный
+                      +counter('cart-pre-order-item__counter','1')
+                      .cart-pre-order-item__pay 2 000 ₽
+                      .cart-pre-order-item__btn-wrap.cart-pre-order-item__btn-wrap-desktop
+                        +btn-favorites('cart-pre-order-item__btn cart-pre-order-item__btn-favorites')
+                  .cart-pre-order-item__bottom
+                    +counter('cart-pre-order-item__counter-mobile', '1')
+                    .cart-pre-order-item__btn-wrap
+                      +btn-favorites('cart-pre-order-item__btn cart-pre-order-item__btn-favorites')
+
+            .total.cart-pre-order__total.col-lg-3.col-md-4.col-sm-6.col-12
+              .total__top 
+                h2.total__title Итого
+                strong.total__total-pay 4 194 ₽
+              .hr.total__hr
+              ul.total__body 
+                li.total__row 
+                  span.total__name Товары:
+                  span.total__pay 4 000 ₽
+                li.total__row 
+                  span.total__name Доставка:
+                  span.total__pay  194 ₽
+              .total__btn-wrap
+                +btn('button','trs','total__btn','Использовать промокод')
+                +btn('button','green','total__btn','Оформить заказ')
+
+      +similar-products('Вам может понравиться')
+    
+    +email-form
+    include ./html/footer.pug
