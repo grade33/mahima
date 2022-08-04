@@ -21,17 +21,18 @@ html(lang="ru")
     main.main 
       section.product(data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out")
         .container
-          .swiper.product__swiper
-            ul.swiper-wrapper
-              li.swiper-slide.product__images-item
-                img.product__images-img(src="@img/product-image-1.jpg", loading="lazy" alt="Image")
-              li.swiper-slide.product__images-item
-                img.product__images-img(src="@img/product-image-2.jpg", loading="lazy" alt="Image")
-              li.swiper-slide.product__images-item
-                img.product__images-img(src="@img/product-image-3.jpg", loading="lazy" alt="Image")
-              li.swiper-slide.product__images-item
-                img.product__images-img(src="@img/product-image-4.jpg", loading="lazy" alt="Image")
-            .swiper-scrollbar
+          .swiper.product__swiper-wrap
+            .swiper.product__swiper
+              ul.swiper-wrapper
+                li.swiper-slide.product__images-item
+                  img.product__images-img(src="@img/product-image-1.jpg", loading="lazy" alt="Image")
+                li.swiper-slide.product__images-item
+                  img.product__images-img(src="@img/product-image-2.jpg", loading="lazy" alt="Image")
+                li.swiper-slide.product__images-item
+                  img.product__images-img(src="@img/product-image-3.jpg", loading="lazy" alt="Image")
+                li.swiper-slide.product__images-item
+                  img.product__images-img(src="@img/product-image-4.jpg", loading="lazy" alt="Image")
+              .swiper-scrollbar
           .product__container.grid 
             ul.product__images.grid.col-xl-9.col-lg-8.col-md-6.col-12
               li.product__images-item.col-lg-6.col-md-12.col-sm-6

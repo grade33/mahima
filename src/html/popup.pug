@@ -4,9 +4,8 @@
       .container.modal__container
         .modal__top.modal__margin-24
           h2.section-title.modal__title Контакты
-          button.btn-close(type='button', aria-label='Закрыть')
-            img(src='img/close-icon.svg', alt)
-        .modal__top.modal__margin-24-links
+          +btn-close('modal__btn-close')
+        .modal__top-links.modal__margin-24
           a(href='mailto:Mahima@info.ru') Mahima@info.ru
           a(href='tel:+79221110500') +7-922-111-05-00
         form.modal__form(action="#")
@@ -26,7 +25,7 @@
           h2.section-title.modal__title Дилерам
           +btn-close('modal__btn-close')
         p.modal__text.modal__desc.modal__margin-24 Mahima открыта к сотрудничеству с оптовыми клиентами. Свяжитесь с нами и получите доступ к сниженным ценам.
-        .modal__top.modal__margin-24-links
+        .modal__top-links.modal__margin-24
           a(href='mailto:Mahima@info.ru') Mahima@info.ru
           a(href='tel:+79221110500') +7-922-111-05-00
         form.modal__form(action="#")
@@ -51,7 +50,7 @@
             input#sign-in-email.modal__field(type='email', placeholder='Email')
             label.visually-hidden(for="sign-in-password") Введите Пароль
             .password
-              input#sign-in-password.modal__field(type='password', placeholder='Пароль')
+              input#sign-in-password.modal__field.password__field(type='password', placeholder='Пароль')
               button.password__btn(type="button")
             button.modal__link.modal-link.forgot-link.modal__forgot(type="button") Забыли пароль?
           +btn('submit', 'green','modal__btn', 'Войти')
@@ -69,7 +68,7 @@
             input#sign-up-email.modal__field(type='email', placeholder='Email')
             label.visually-hidden(for="sign-up-password") Придумайте пароль
             .password
-              input#sign-up-password.modal__field(type='password', placeholder='Придумайте пароль')
+              input#sign-up-password.modal__field.password__field(type='password', placeholder='Придумайте пароль')
               button.password__btn(type="button")
           button.btn.btn__green.modal__btn.modal-link.verification-code-link(type='submit' disabled) Зарегистрироваться
           div.modal__text.modal__bottom
@@ -123,7 +122,7 @@
         form.modal__form(action="#")
           .modal__field-wrap.modal__margin-24
             .password
-              input#new-pass-password.modal__field(type='password', placeholder='Новый пароль')
+              input#new-pass-password.modal__field.password__field(type='password', placeholder='Новый пароль')
               button.password__btn(type="button")
           button.btn.btn__green.modal__btn(type='submit' disabled) Подтвердить
 

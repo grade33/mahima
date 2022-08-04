@@ -162,7 +162,7 @@ $choices-z-index: 1;
   vertical-align: top;
   width: 100%;
   overflow: hidden;
-  border: 1px solid #777777;
+  border: 1px solid $black;
   border-radius: 0;
   min-height: unset;
   transition: border-color .2s ease-in-out;
@@ -315,7 +315,7 @@ $choices-z-index: 1;
 
 .#{$choices-selector}__list--dropdown {
   @extend %choices-dropdown;
-  border: 1px solid #777777;
+  border: 1px solid $black;
   background: $white;
   transition: border-color .2s ease-in-out;
 }

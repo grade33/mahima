@@ -20,13 +20,22 @@ mixin field(Class,text,Type,placeholder,value)
     input.field__input(type=Type placeholder=placeholder value=value)
 
 mixin field-radio(Class, text, name, checked)
-  label.field-radio(class=Class)
+  label.field-check(class=Class)
     if checked
       input.visually-hidden(type="radio" name=name checked)
     else 
       input.visually-hidden(type="radio" name=name)
-    span.field-checkbox__custom
-    span.field-checkbox__text=text
+    span.radio-custom.field-check__custom
+    span.field-check__text=text
+
+mixin field-checkbox(Class, text, name, checked)
+  label.field-check(class=Class)
+    if checked
+      input.visually-hidden(type="checkbox" name=name checked)
+    else 
+      input.visually-hidden(type="checkbox" name=name)
+    span.checkbox-custom.field-check__custom
+    span.field-check__text=text
 
 
 mixin btn-close(Class)
@@ -169,7 +178,6 @@ mixin header(profile)
           a.header__user-nav-link(href="./cart.html" aria-label="Корзина") 
             img.header__cart-icon(src="@img/cart-icon.svg", alt="")
   
-
 mixin similar-products(title)
   section.similar-products(data-aos="fade-up" data-aos-delay="50" data-aos-duration="1000" data-aos-easing="ease-in-out")
     .container.similar-products__container 

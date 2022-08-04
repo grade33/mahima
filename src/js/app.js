@@ -19,4 +19,5 @@ functions.leaveReview();
 functions.ProfileSuccessfulChange();
 functions.promocode();
 functions.imageZoom();
+functions.openFilter();
 

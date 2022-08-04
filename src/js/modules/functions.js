@@ -62,7 +62,7 @@ export function isAccordion() {
       if (accPanel.style.maxHeight) {
         accPanel.style.maxHeight = null;
       } else {
-        accPanel.style.maxHeight = accPanel.scrollHeight + "px";
+        accPanel.style.maxHeight = accPanel.scrollHeight + 120 + "px";
       }
     })
   })
@@ -153,16 +153,19 @@ export function openModal() {
         link.classList.contains('new-pass-link') ? modal.querySelector('.new-pass') :
         null
 
+      document.body.style.overflow = 'hidden'
       popup.classList.add('popup_active');
       modalBlock.classList.add('modal__block_active');
       document.body.parentElement.style.overflowY = 'hidden';
 
 
       popup.addEventListener('click', (e) => {
-        if (e.target.closest('.modal__block') && !e.target.closest('.btn-close')) return;
+        if (e.target.closest('.modal__block') && !e.target.closest('.modal__btn-close')) return;
         modalBlock.querySelectorAll('input, textarea').forEach(field => {
           field.value = ''
         })
+
+        document.body.style.overflow = 'unset'
         popup.classList.remove('popup_active');
         modalBlock.classList.remove('modal__block_active');
         document.body.parentElement.style.overflowY = 'unset';
@@ -227,10 +230,10 @@ export function leaveReview() {
 }
 
 export function ProfileSuccessfulChange() {
-  let btnWrap = document ?.querySelector('.profile__btn-wrap')
-  let btn = btnWrap ?.querySelector('.profile__btn')
-  let successful = btnWrap ?.querySelector('.profile__successful')
-  btn ?.addEventListener('click', () => {
+  let btnWrap = document?.querySelector('.profile__btn-wrap')
+  let btn = btnWrap?.querySelector('.profile__btn')
+  let successful = btnWrap?.querySelector('.profile__successful')
+  btn?.addEventListener('click', () => {
     successful.classList.add('profile__successful_active')
   })
 }
@@ -242,11 +245,11 @@ export function promocode() {
   let input = document.querySelector('.total__promocode-input');
   let text = document.querySelector('.total__promocode-text')
   let error = document.querySelector('.error');
-  arrangeBtn ?.addEventListener('click', () => {
+  arrangeBtn?.addEventListener('click', () => {
     arrangeBtn.classList.add('visually-hidden');
     inputWrap.classList.remove('visually-hidden');
   })
-  btnCheck ?.addEventListener('click', () => {
+  btnCheck?.addEventListener('click', () => {
     if (input.value === '') {
       console.log(1);
       error.querySelector('.error__text').innerHTML = 'Промокод не найден';
@@ -260,11 +263,13 @@ export function promocode() {
 export function imageZoom() {
   let imgList = document.querySelectorAll('.product__images-img');
   let zoom = document.querySelector('.zoom');
-  let zoomImgBtnList = zoom.querySelectorAll('.zoom__btn');
-  let closeBtn = zoom.querySelector('.zoom__close');
-  let mainImg = zoom.querySelector('.zoom__main-img');
+  let zoomImgBtnList = zoom?.querySelectorAll('.zoom__btn');
+  let closeBtn = zoom?.querySelector('.zoom__close');
+  let mainImg = zoom?.querySelector('.zoom__main-img');
 
-  imgList.forEach(img => {
+
+
+  imgList?.forEach(img => {
     img.addEventListener('click', () => {
       zoom.classList.add('zoom_active');
       let src = img.getAttribute('src');
@@ -275,7 +280,7 @@ export function imageZoom() {
     })
   })
 
-  zoomImgBtnList.forEach(btn => {
+  zoomImgBtnList?.forEach(btn => {
     btn.addEventListener('click', () => {
       zoomImgBtnList.forEach(btn => {
         btn.classList.remove('zoom__btn_active')
@@ -286,8 +291,8 @@ export function imageZoom() {
     })
   })
 
-  closeBtn.addEventListener('click', closeBtnFunc)
-  zoom.querySelector('.zoom__bg').addEventListener('click', closeBtnFunc)
+  closeBtn?.addEventListener('click', closeBtnFunc)
+  zoom?.querySelector('.zoom__bg').addEventListener('click', closeBtnFunc)
 
   function closeBtnFunc() {
     mainImg.setAttribute('src', '#');
@@ -296,4 +301,19 @@ export function imageZoom() {
       btn.classList.remove('zoom__btn_active')
     })
   }
+}
+
+
+export function openFilter() {
+  let filter = document.querySelector('.filter-modal')
+  let btn = document.querySelector('.filter__open')
+  let btnClose = filter.querySelector('.filter-modal__btn-close')
+  btn.addEventListener('click', () => {
+    document.body.style.overflow = 'hidden'
+    filter.classList.add('filter-modal_active')
+  })
+  btnClose.addEventListener('click', () => {
+    document.body.style.overflow = 'unset'
+    filter.classList.remove('filter-modal_active')
+  })
 }

@@ -49,42 +49,193 @@ html(lang="ru")
               .filter__bottom 
                 span.filter__selected Нет выбранных фильтров
                 button.filter__remove(type="button") Удалить фильтры
-          ul.catalog__list.grid
-            -
-              let productArr = [
-                ['col-lg-3 col-md-4 col-6','@img/product/product-1.jpg', '999 ₽','Удлинённые шорты'],
-                ['col-lg-3 col-md-4 col-6','@img/product/product-2.jpg', '499 ₽','Трикотажная майка'],
-                ['col-lg-3 col-md-4 col-6','@img/product/product-3.jpg', '1 499 ₽','Хлопковое платье Baby Doll'],
-                ['col-lg-3 col-md-4 col-6','@img/product/product-4.jpg', '2 500 ₽','Платье-рубашка с накладными карманами'],
-                ['col-lg-3 col-md-4 col-6','@img/product/product-5.jpg', '599 ₽','Базовая футболка'],
-                ['col-lg-3 col-md-4 col-6','@img/product/product-6.jpg', '2 000 ₽','Однобортный прямой жакет'],
-                ['col-lg-3 col-md-4 col-6','@img/product/product-7.jpg', '2 000 ₽','Широкие джинсы'],
-                ['col-lg-3 col-md-4 col-6','@img/product/product-8.jpg', '5 200 ₽','Структурный джемпер с молнией'],
-                ['col-lg-3 col-md-4 col-6','@img/product/product-9.jpg', '999 ₽','Прямые брюки'],
-                ['col-lg-3 col-md-4 col-6','@img/product/product-10.jpg','2 499 ₽','Рубашка из вискозы с роговыми пуговицами'],
-                ['col-lg-3 col-md-4 col-6','@img/product/product-11.jpg','600 ₽','Джемпер кроёный'],
-                ['col-lg-3 col-md-4 col-6','@img/product/product-12.jpg','1 200 ₽','Прямая юбка'],
-                ['col-lg-3 col-md-4 col-6','@img/product/product-13.jpg','1 500 ₽','Прямая юбка'],
-                ['col-lg-3 col-md-4 col-6','@img/product/product-14.jpg','2 400 ₽','Джинсы Boyfriend'],
-                ['col-lg-3 col-md-4 col-6','@img/product/product-15.jpg','3 000 ₽','Минималистичная куртка с капюшоном'],
-                ['col-lg-3 col-md-4 col-6','@img/product/product-16.jpg','1 800 ₽','Трикотажные широкие брюки'],
-              ]
-            each val in productArr
-              +product-item(val[0],val[1],val[2],val[3],'')
-          .block-nav.block-nav_pagination
-            a.block-nav__button.block-nav__button_prev(href="#")
-              img(src="@img/arrow-down-icon.svg", alt="")
-            ul.block-nav__pagination
-              li
-                a.block-nav__pagination-bullet(href="#") 1
-              li
-                a.block-nav__pagination-bullet(href="#") 2
-              li
-                a.block-nav__pagination-bullet.block-nav__pagination-bullet_active(href="#") 3
-              li
-                a.block-nav__pagination-bullet(href="#") 4
-            a.block-nav__button.block-nav__button_next(href="#")
-              img(src="@img/arrow-down-icon.svg", alt="")
-    
+          .catalog__list-wrap
+            ul.catalog__list.grid
+              -
+                let productArr = [
+                  ['col-lg-3 col-md-4 col-6','@img/product/product-1.jpg', '999 ₽','Удлинённые шорты'],
+                  ['col-lg-3 col-md-4 col-6','@img/product/product-2.jpg', '499 ₽','Трикотажная майка'],
+                  ['col-lg-3 col-md-4 col-6','@img/product/product-3.jpg', '1 499 ₽','Хлопковое платье Baby Doll'],
+                  ['col-lg-3 col-md-4 col-6','@img/product/product-4.jpg', '2 500 ₽','Платье-рубашка с накладными карманами'],
+                  ['col-lg-3 col-md-4 col-6','@img/product/product-5.jpg', '599 ₽','Базовая футболка'],
+                  ['col-lg-3 col-md-4 col-6','@img/product/product-6.jpg', '2 000 ₽','Однобортный прямой жакет'],
+                  ['col-lg-3 col-md-4 col-6','@img/product/product-7.jpg', '2 000 ₽','Широкие джинсы'],
+                  ['col-lg-3 col-md-4 col-6','@img/product/product-8.jpg', '5 200 ₽','Структурный джемпер с молнией'],
+                  ['col-lg-3 col-md-4 col-6','@img/product/product-9.jpg', '999 ₽','Прямые брюки'],
+                  ['col-lg-3 col-md-4 col-6','@img/product/product-10.jpg','2 499 ₽','Рубашка из вискозы с роговыми пуговицами'],
+                  ['col-lg-3 col-md-4 col-6','@img/product/product-11.jpg','600 ₽','Джемпер кроёный'],
+                  ['col-lg-3 col-md-4 col-6','@img/product/product-12.jpg','1 200 ₽','Прямая юбка'],
+                  ['col-lg-3 col-md-4 col-6','@img/product/product-13.jpg','1 500 ₽','Прямая юбка'],
+                  ['col-lg-3 col-md-4 col-6','@img/product/product-14.jpg','2 400 ₽','Джинсы Boyfriend'],
+                  ['col-lg-3 col-md-4 col-6','@img/product/product-15.jpg','3 000 ₽','Минималистичная куртка с капюшоном'],
+                  ['col-lg-3 col-md-4 col-6','@img/product/product-16.jpg','1 800 ₽','Трикотажные широкие брюки'],
+                ]
+              each val in productArr
+                +product-item(val[0],val[1],val[2],val[3],'')
+            .block-nav.block-nav_pagination
+              a.block-nav__button.block-nav__button_prev(href="#")
+                img(src="@img/arrow-down-icon.svg", alt="")
+              ul.block-nav__pagination
+                li
+                  a.block-nav__pagination-bullet(href="#") 1
+                li
+                  a.block-nav__pagination-bullet(href="#") 2
+                li
+                  a.block-nav__pagination-bullet.block-nav__pagination-bullet_active(href="#") 3
+                li
+                  a.block-nav__pagination-bullet(href="#") 4
+              a.block-nav__button.block-nav__button_next(href="#")
+                img(src="@img/arrow-down-icon.svg", alt="")
+
+      .filter-modal
+        .filter-modal__block
+          .filter-modal__content
+            .container.filter-modal__container
+              .filter-modal__top
+                button.filter-modal__btn-close(type="button")
+                  svg.filter-modal__btn-icon
+                    use(xlink:href="@img/sprite.svg#back-arrow")
+                h2.section-title.filter-modal__title Фильтры
+              ul.filter-modal__acc-list
+                  li.acc.filter-modal__acc-item
+                    .acc__head
+                      button.acc__trigger(type="button")
+                      .acc__title-wrap
+                        h3.acc__title Сортировка
+                    .acc__panel
+                      .filter-modal__other 
+                        ul.filter-modal__other-list 
+                          li.filter-modal__other-item
+                            +field-radio('filter-modal__other-field', 'По популярности', 'filter-sort', '')
+                          li.filter-modal__other-item
+                            +field-radio('filter-modal__other-field', 'По возрастанию цены', 'filter-sort', 'checked')
+                          li.filter-modal__other-item
+                            +field-radio('filter-modal__other-field', 'По убыванию цены', 'filter-sort', '')
+                          li.filter-modal__other-item
+                            +field-radio('filter-modal__other-field', 'По новинкам', 'filter-sort', '')
+                          li.filter-modal__other-item
+                            +field-radio('filter-modal__other-field', 'По скидкам', 'filter-sort', '')
+                  li.acc.filter-modal__acc-item
+                    .acc__head
+                      button.acc__trigger(type="button")
+                      .acc__title-wrap
+                        h3.acc__title Размер
+                    .acc__panel
+                      .filter-modal__other 
+                        ul.filter-modal__other-list 
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Все материалы', 'name1', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Акрил', 'name2', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Вискоза', 'name3', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Кашемир', 'name4', 'checked')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Лайкра', 'name5', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Микрофибра', 'name6', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Искусственный мех', 'name7', 'checked')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Искусственная кожа', 'name8', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Лён', 'name9', 'checked')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Полимер', 'name10', '')
+                  li.acc.filter-modal__acc-item
+                    .acc__head
+                      button.acc__trigger(type="button")
+                      .acc__title-wrap
+                        h3.acc__title Цена
+                    .acc__panel
+                      .filter-modal__price
+                        +field('','От','number','0','')
+                        +field('','До','number','10 000','')
+                  li.acc.filter-modal__acc-item
+                    .acc__head
+                      button.acc__trigger(type="button")
+                      .acc__title-wrap
+                        h3.acc__title Цвет
+                    .acc__panel
+                      .filter-modal__other 
+                        ul.filter-modal__other-list 
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Все материалы', 'name1', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Акрил', 'name2', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Вискоза', 'name3', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Кашемир', 'name4', 'checked')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Лайкра', 'name5', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Микрофибра', 'name6', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Искусственный мех', 'name7', 'checked')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Искусственная кожа', 'name8', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Лён', 'name9', 'checked')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Полимер', 'name10', '')
+                  li.acc.filter-modal__acc-item
+                    .acc__head
+                      button.acc__trigger(type="button")
+                      .acc__title-wrap
+                        h3.acc__title Тип одежды
+                    .acc__panel
+                      .filter-modal__other 
+                        ul.filter-modal__other-list 
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Все материалы', 'name1', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Акрил', 'name2', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Вискоза', 'name3', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Кашемир', 'name4', 'checked')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Лайкра', 'name5', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Микрофибра', 'name6', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Искусственный мех', 'name7', 'checked')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Искусственная кожа', 'name8', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Лён', 'name9', 'checked')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Полимер', 'name10', '')
+                  li.acc.filter-modal__acc-item
+                    .acc__head
+                      button.acc__trigger(type="button")
+                      .acc__title-wrap
+                        h3.acc__title Материалы
+                    .acc__panel
+                      .filter-modal__other 
+                        ul.filter-modal__other-list 
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Все материалы', 'name1', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Акрил', 'name2', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Вискоза', 'name3', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Кашемир', 'name4', 'checked')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Лайкра', 'name5', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Микрофибра', 'name6', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Искусственный мех', 'name7', 'checked')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Искусственная кожа', 'name8', '')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Лён', 'name9', 'checked')
+                          li.filter-modal__other-item
+                            +field-checkbox('filter-modal__other-field', 'Полимер', 'name10', '')
+          
     +email-form
     include ./html/footer.pug
