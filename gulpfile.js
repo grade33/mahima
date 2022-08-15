@@ -2,8 +2,12 @@
 import gulp from "gulp";
 
 // Импорт путей и общих плагинов
-import { path } from './gulp/config/path.js';
-import { plugins } from './gulp/config/plugins.js'
+import {
+  path
+} from './gulp/config/path.js';
+import {
+  plugins
+} from './gulp/config/plugins.js'
 
 // Передаем значения в глобальную перемнную
 global.app = {
@@ -15,19 +19,48 @@ global.app = {
 }
 
 // Импор задачa
-import { server } from "./gulp/tasks/server.js";
-import { clean } from "./gulp/tasks/clean.js";
-import { files } from "./gulp/tasks/files.js";
-import { markup } from "./gulp/tasks/markup.js";
-import { markupBackend } from "./gulp/tasks/markup.js";
-import { styles } from "./gulp/tasks/styles.js";
-import { stylesBackend } from "./gulp/tasks/styles.js";
-import { scripts } from "./gulp/tasks/scripts.js";
-import { scriptsBackend } from "./gulp/tasks/scripts.js";
-import { images } from "./gulp/tasks/images.js";
-import { sprite } from "./gulp/tasks/sprite.js";
-import { otfToTtf, ttfToWoff, fontDrag, fontStyle } from "./gulp/tasks/fonts.js";
-import { zip } from "./gulp/tasks/zip.js";
+import {
+  server
+} from "./gulp/tasks/server.js";
+import {
+  clean
+} from "./gulp/tasks/clean.js";
+import {
+  files
+} from "./gulp/tasks/files.js";
+import {
+  markup
+} from "./gulp/tasks/markup.js";
+import {
+  markupBackend
+} from "./gulp/tasks/markup.js";
+import {
+  styles
+} from "./gulp/tasks/styles.js";
+import {
+  stylesBackend
+} from "./gulp/tasks/styles.js";
+import {
+  scripts
+} from "./gulp/tasks/scripts.js";
+import {
+  scriptsBackend
+} from "./gulp/tasks/scripts.js";
+import {
+  images
+} from "./gulp/tasks/images.js";
+import {
+  sprite
+} from "./gulp/tasks/sprite.js";
+import {
+  otfToTtf,
+  ttfToWoff,
+  fontDrag,
+  fontStyle
+} from "./gulp/tasks/fonts.js";
+import {
+  zip
+} from "./gulp/tasks/zip.js";
 
 // Наблюдатель за изменениями в файлах
 const watcher = () => {
@@ -43,8 +76,8 @@ const watcher = () => {
 const fonts = gulp.series(otfToTtf, ttfToWoff, fontDrag, fontStyle);
 
 // Основные задачи
-const mainTasks = gulp.series(fonts, gulp.parallel(files, markup, styles, scripts, images, sprite))
-const mainTasksBackend = gulp.series(fonts, gulp.parallel(files, markupBackend, stylesBackend, scriptsBackend, images, sprite))
+const mainTasks = gulp.series(fonts, images, gulp.parallel(files, markup, styles, scripts, sprite))
+const mainTasksBackend = gulp.series(fonts, images, gulp.parallel(files, markupBackend, stylesBackend, scriptsBackend, sprite))
 
 // Построение сценариев для выполнения задач
 const dev = gulp.series(clean, mainTasks, gulp.parallel(watcher, server));
@@ -53,10 +86,18 @@ const backend = gulp.series(clean, mainTasksBackend);
 const deployZIP = gulp.series(clean, mainTasks, zip);
 
 // Экспорт сценариев
-export { dev }
-export { build }
-export { backend }
-export { deployZIP }
+export {
+  dev
+}
+export {
+  build
+}
+export {
+  backend
+}
+export {
+  deployZIP
+}
 
 // Выполнение сценария по умолчанию
 gulp.task('default', dev);

@@ -136,12 +136,13 @@ export function isBurger() {
 export function openModal() {
   const popup = document.querySelector('.popup');
   const modal = popup.querySelector('.modal');
-
   document.querySelectorAll('.modal-link').forEach(link => {
     link.addEventListener('click', () => {
       document.querySelectorAll('.modal__block').forEach(modalBlock => {
         modalBlock.classList.remove('modal__block_active');
       })
+
+      scroll(0,0)
 
       const modalBlock = link.classList.contains('contact-link') ? modal.querySelector('.contacts') :
         link.classList.contains('diller-link') ? modal.querySelector('.diller') :
@@ -151,6 +152,7 @@ export function openModal() {
         link.classList.contains('review__write-link') ? modal.querySelector('.review-modal') :
         link.classList.contains('forgot-link') ? modal.querySelector('.forgot') :
         link.classList.contains('new-pass-link') ? modal.querySelector('.new-pass') :
+        link.classList.contains('desc-link') ? modal.querySelector('.product-desc') :
         null
 
       document.body.style.overflow = 'hidden'
@@ -303,16 +305,15 @@ export function imageZoom() {
   }
 }
 
-
 export function openFilter() {
-  let filter = document.querySelector('.filter-modal')
-  let btn = document.querySelector('.filter__open')
-  let btnClose = filter.querySelector('.filter-modal__btn-close')
-  btn.addEventListener('click', () => {
+  let filter = document?.querySelector('.filter-modal')
+  let btn = document?.querySelector('.filter__open')
+  let btnClose = filter?.querySelector('.filter-modal__btn-close')
+  btn?.addEventListener('click', () => {
     document.body.style.overflow = 'hidden'
     filter.classList.add('filter-modal_active')
   })
-  btnClose.addEventListener('click', () => {
+  btnClose?.addEventListener('click', () => {
     document.body.style.overflow = 'unset'
     filter.classList.remove('filter-modal_active')
   })
